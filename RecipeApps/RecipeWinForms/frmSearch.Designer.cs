@@ -32,6 +32,7 @@
             tblSearch = new TableLayoutPanel();
             txtSearch = new TextBox();
             btnSearch = new Button();
+            btnNew = new Button();
             gRecipe = new DataGridView();
             tblMain.SuspendLayout();
             tblSearch.SuspendLayout();
@@ -57,17 +58,18 @@
             // tblSearch
             // 
             tblSearch.AutoSize = true;
-            tblSearch.ColumnCount = 2;
-            tblSearch.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tblSearch.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tblSearch.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tblSearch.ColumnCount = 3;
+            tblSearch.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tblSearch.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tblSearch.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tblSearch.Controls.Add(txtSearch, 0, 0);
             tblSearch.Controls.Add(btnSearch, 1, 0);
+            tblSearch.Controls.Add(btnNew, 2, 0);
             tblSearch.Location = new Point(3, 3);
             tblSearch.Name = "tblSearch";
             tblSearch.RowCount = 1;
             tblSearch.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblSearch.Size = new Size(258, 36);
+            tblSearch.Size = new Size(465, 36);
             tblSearch.TabIndex = 0;
             // 
             // txtSearch
@@ -76,19 +78,29 @@
             txtSearch.Font = new Font("Segoe UI", 10.8F);
             txtSearch.Location = new Point(3, 3);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(123, 31);
+            txtSearch.Size = new Size(122, 31);
             txtSearch.TabIndex = 2;
             // 
             // btnSearch
             // 
-            btnSearch.Anchor = AnchorStyles.Left;
+            btnSearch.Dock = DockStyle.Fill;
             btnSearch.Font = new Font("Segoe UI", 10.8F);
-            btnSearch.Location = new Point(132, 3);
+            btnSearch.Location = new Point(157, 3);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(94, 29);
+            btnSearch.Size = new Size(148, 30);
             btnSearch.TabIndex = 0;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // btnNew
+            // 
+            btnNew.Dock = DockStyle.Fill;
+            btnNew.Location = new Point(311, 3);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new Size(151, 30);
+            btnNew.TabIndex = 3;
+            btnNew.Text = "New";
+            btnNew.UseVisualStyleBackColor = true;
             // 
             // gRecipe
             // 
@@ -124,5 +136,6 @@
         private TextBox txtSearch;
         private Button btnSearch;
         private DataGridView gRecipe;
+        private Button btnNew;
     }
 }

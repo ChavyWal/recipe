@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CPUFramework;
+using CPUWindowsFormFrameWork;
 
 namespace RecipeWinForms
 {
@@ -18,12 +19,10 @@ namespace RecipeWinForms
             InitializeComponent();
             btnSearch.Click += BtnSearch_Click;
             gRecipe.CellDoubleClick += GRecipe_CellDoubleClick;
-            gRecipe.AllowUserToAddRows = false;
-            gRecipe.ReadOnly = true;
-            gRecipe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            gRecipe.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            WindowsFormUtility.FormatGridforsearchresults(gRecipe);
+            btnNew.Click += BtnNew_Click;
         }
-       
+
         private void BtnSearch_Click(object? sender, EventArgs e)
         {
             string sql = "Select r.Recipename, r.Recipeid from recipe r join users u on r.usersid = u.usersid where r.Recipename like '%" + txtSearch.Text + "%' order by recipeid";
@@ -34,7 +33,11 @@ namespace RecipeWinForms
 
         private void ShowRecipeForm(int rowindex)
         {
-            int id = (int)gRecipe.Rows[rowindex].Cells["RecipeId"].Value;
+            int id = 0;
+            if (rowindex > -1)
+            {
+                id = (int)gRecipe.Rows[rowindex].Cells["RecipeId"].Value;
+            }
             frmRecipe frm = new();
             frm.ShowForm(id);
         }
@@ -42,6 +45,11 @@ namespace RecipeWinForms
         private void GRecipe_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
             ShowRecipeForm(e.RowIndex);
+        }
+
+        private void BtnNew_Click(object? sender, EventArgs e)
+        {
+            ShowRecipeForm(-1);
         }
     }
 }
