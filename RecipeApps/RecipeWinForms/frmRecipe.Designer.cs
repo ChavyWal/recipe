@@ -31,7 +31,6 @@
             lblUserCaption = new Label();
             txtDateArchived = new TextBox();
             txtDatePublished = new TextBox();
-            txtDateDraft = new TextBox();
             lblRecipePictureCaaption = new Label();
             lblCurrentStatusCaption = new Label();
             lblDateArchived = new Label();
@@ -50,6 +49,7 @@
             txtCalories = new TextBox();
             lblCurrentStatus = new Label();
             lblRecipePicture = new Label();
+            dtpDateDraft = new DateTimePicker();
             tableLayoutPanel1.SuspendLayout();
             tblSaveDelete.SuspendLayout();
             SuspendLayout();
@@ -79,14 +79,6 @@
             txtDatePublished.Name = "txtDatePublished";
             txtDatePublished.Size = new Size(425, 27);
             txtDatePublished.TabIndex = 12;
-            // 
-            // txtDateDraft
-            // 
-            txtDateDraft.Anchor = AnchorStyles.Left;
-            txtDateDraft.Location = new Point(158, 133);
-            txtDateDraft.Name = "txtDateDraft";
-            txtDateDraft.Size = new Size(425, 27);
-            txtDateDraft.TabIndex = 11;
             // 
             // lblRecipePictureCaaption
             // 
@@ -183,7 +175,6 @@
             tableLayoutPanel1.Controls.Add(lblDateArchived, 0, 5);
             tableLayoutPanel1.Controls.Add(lblCurrentStatusCaption, 0, 6);
             tableLayoutPanel1.Controls.Add(lblRecipePictureCaaption, 0, 7);
-            tableLayoutPanel1.Controls.Add(txtDateDraft, 1, 3);
             tableLayoutPanel1.Controls.Add(txtDatePublished, 1, 4);
             tableLayoutPanel1.Controls.Add(txtDateArchived, 1, 5);
             tableLayoutPanel1.Controls.Add(lblUserCaption, 0, 8);
@@ -194,6 +185,7 @@
             tableLayoutPanel1.Controls.Add(txtCalories, 1, 2);
             tableLayoutPanel1.Controls.Add(lblCurrentStatus, 1, 6);
             tableLayoutPanel1.Controls.Add(lblRecipePicture, 1, 7);
+            tableLayoutPanel1.Controls.Add(dtpDateDraft, 1, 3);
             tableLayoutPanel1.Location = new Point(0, 1);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 10;
@@ -300,6 +292,15 @@
             lblRecipePicture.Size = new Size(425, 42);
             lblRecipePicture.TabIndex = 27;
             // 
+            // dtpDateDraft
+            // 
+            dtpDateDraft.Dock = DockStyle.Fill;
+            dtpDateDraft.Location = new Point(158, 129);
+            dtpDateDraft.Name = "dtpDateDraft";
+            dtpDateDraft.Size = new Size(425, 27);
+            dtpDateDraft.TabIndex = 28;
+            dtpDateDraft.Value = new DateTime(2024, 7, 18, 12, 35, 40, 0);
+            // 
             // frmRecipe
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -320,7 +321,6 @@
         private Label lblUserCaption;
         private TextBox txtDateArchived;
         private TextBox txtDatePublished;
-        private TextBox txtDateDraft;
         private Label lblRecipePictureCaaption;
         private Label lblCurrentStatusCaption;
         private Label lblDateArchived;
@@ -339,5 +339,6 @@
         private TextBox txtCalories;
         private Label lblCurrentStatus;
         private Label lblRecipePicture;
+        private DateTimePicker dtpDateDraft;
     }
 }

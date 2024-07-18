@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CPUFramework;
 using System.Diagnostics;
 using CPUWindowsFormFrameWork;
+using Microsoft.VisualBasic;
 
 namespace RecipeWinForms
 {
@@ -38,7 +39,7 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(txtRecipeName, dtrecipe);
             WindowsFormUtility.SetListBinding(lstCuisineType, dtCuisineType, dtrecipe, "CuisineType");
             WindowsFormUtility.SetControlBinding(txtCalories, dtrecipe);
-            WindowsFormUtility.SetControlBinding(txtDateDraft, dtrecipe);
+            WindowsFormUtility.SetControlBinding(dtpDateDraft, dtrecipe);
             WindowsFormUtility.SetControlBinding(txtDatePublished, dtrecipe);
             WindowsFormUtility.SetControlBinding(txtDateArchived, dtrecipe);
             WindowsFormUtility.SetControlBinding(lblCurrentStatus, dtrecipe);
@@ -68,6 +69,7 @@ namespace RecipeWinForms
             }
             else
             {
+                dtpDateDraft.Text = DateTime.Now.ToString("yyyy, MMMM, d");
                 statetement = "insert recipe(RecipeName, calories, CuisineTypeID, DateDraft, UsersID)";
                 statetement += $"select '{r["RecipeName"]}', '{r["Calories"]}', '{r["CuisineTypeid"]}', '{r["DateDraft"]}', '{r["usersID"]}'";
             }
