@@ -13,6 +13,21 @@ namespace RecipeTests
         }
 
         [Test]
+        public void SearchRecipe()
+        {
+            string criteria = "c";
+            int num = SQLUtility.GetFirstColumnFirstRowValue("select total = count(*) from recipe where recipename like '%" + criteria + "%'");
+            Assume.That(num > 0, "can't run test, no recipes  macht your search");
+            TestContext.WriteLine(num + " recipes that match " + criteria);
+            TestContext.WriteLine("want to ensure that recipe search returns " + num + " rows");
+
+            DataTable dt = Recipe.SearchRecipe(criteria);
+            int results = dt.Rows.Count;
+            Assert.IsTrue(results == num, "results of recipe search deos not match number of recipes, " + results + " <> " + num);
+            TestContext.WriteLine("number of rows returned by recipe search is " + results);
+        }
+
+        [Test]
         public void LoadRecipe()
         {
             int recipeid = GetExistingRecipeID();
