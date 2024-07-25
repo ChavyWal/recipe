@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CPUFramework;
 using CPUWindowsFormFrameWork;
+using RecipeSystem;
 
 namespace RecipeWinForms
 {
@@ -25,8 +25,7 @@ namespace RecipeWinForms
 
         private void BtnSearch_Click(object? sender, EventArgs e)
         {
-            string sql = "Select r.Recipename, r.Recipeid from recipe r join users u on r.usersid = u.usersid where r.Recipename like '%" + txtSearch.Text + "%' order by recipeid";
-            DataTable dt = SQLUtility.GetDataTable(sql);
+            DataTable dt = Recipe.SearchRecipe(txtSearch.Text);
             gRecipe.DataSource = dt;
             gRecipe.Columns["RecipeId"].Visible = false;
         }
