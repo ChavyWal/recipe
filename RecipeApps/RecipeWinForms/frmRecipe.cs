@@ -12,6 +12,7 @@ using System.Diagnostics;
 using CPUWindowsFormFrameWork;
 using RecipeSystem;
 using Microsoft.VisualBasic;
+using System.Linq.Expressions;
 
 namespace RecipeWinForms
 {
@@ -59,13 +60,29 @@ namespace RecipeWinForms
             {
                 dtpDateDraft.Text = DateTime.Now.ToString("yyyy, MMMM, dd");
             }
-            Recipe.save(dtrecipe);
+            try 
+            {
+                Recipe.save(dtrecipe);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Record Keeper");
+            }
+
+            
         }
 
         private void Delete()
         {
-            Recipe.Delete(dtrecipe);
-            this.Close();
+            try
+            {
+                Recipe.Delete(dtrecipe);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Record Keeper");
+            }
         }
 
         private void BtnDelete_Click(object? sender, EventArgs e)

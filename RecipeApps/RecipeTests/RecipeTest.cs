@@ -63,6 +63,25 @@ namespace RecipeTests
         }
 
         [Test]
+        public void CannotDeleteRecipe()
+        {
+            DataTable dt = SQLUtility.GetDataTable("select top 1 r.RecipeID, r.RecipeName, c.CuisineType, r.Cuisinetypeid, r.usersid, r.Calories, r.DateDraft, r.DatePublished, r.DateArchived, r.CurrentStatus, r.RecipePicture, u.UserName from recipe r join CuisineType c on c.CuisineTypeID = r.CuisineTypeID join users u on u.UsersID = r.UsersID join RecipeDirection rd on r.RecipeID = rd.recipeid join recipeingredient ri on r.recipeid = ri.recipeid join mealcourserecipe mr on r.recipeid = mr.recipeid  join cookbookRecipe cr on r.recipeid = cr.recipeid ");
+            int recipeid = 0;
+            string recipedesc = "";
+            if (dt.Rows.Count > 0)
+            {
+                recipeid = (int)dt.Rows[0]["recipeid"];
+                recipedesc = dt.Rows[0]["recipename"].ToString();
+            }
+            
+            TestContext.WriteLine("existing recipe with child tables with id = " + recipeid + " " + recipedesc);
+            TestContext.WriteLine("ensure that app cannot delete " + recipeid);
+
+            Exception ex = Assert.Throws<Exception>(() => Recipe.Delete(dt));
+            TestContext.WriteLine(ex.Message);
+        }
+
+        [Test]
         public void ChangeExistingRecipe()
         {
             int id = GetExistingRecipeID();
@@ -109,6 +128,32 @@ namespace RecipeTests
             Assert.IsTrue(musersid == (int)dt.Rows[0]["usersid"], " usersid not modified");
 
             TestContext.WriteLine(" For recipe (" + id + ") calories: " + mcalories+ " recipename: " + mrecipename + " DateDraft: " + mdatedraft + " Cuisinetpeid: " + mcuisinetypeid + " usersid: " + musersid);
+        }
+
+        [Test]
+        public void ChangeExistingRecipeToInvalidDateDraft()
+        {
+            int recipeid = GetExistingRecipeID();
+            
+            Assume.That(recipeid > 0, "no recipes in the DataBase, Can't run.");
+            DataTable dt = Recipe.Load(recipeid);
+            dt.Rows[0]["datedraft"] = DateTime.Today.AddYears(10);
+            Exception ex = Assert.Throws<Exception>(() => Recipe.save(dt));
+            TestContext.WriteLine(ex.Message);
+        }
+
+        [Test]
+        public void ChangeExistingRecipeToInvalidName()
+        {
+            int recipeid = GetExistingRecipeID();
+
+            Assume.That(recipeid > 0, "no recipes in the DataBase, Can't run.");
+            string recipename = GetFirstColumnFirstRowValueAsString("select top 1 recipename from recipe where recipeid <> " + recipeid );
+            DataTable dt = Recipe.Load(recipeid);
+            dt.Rows[0]["Recipename"] = recipename;
+            Exception ex = Assert.Throws<Exception>(() => Recipe.save(dt));
+            TestContext.WriteLine(ex.Message);
+
         }
 
         [Test]
@@ -172,6 +217,20 @@ namespace RecipeTests
         private int GetExistingRecipeID()
         {
             return SQLUtility.GetFirstColumnFirstRowValue("select top 1 recipeid from recipe");
+        }
+
+        private string GetFirstColumnFirstRowValueAsString(string sql)
+        {
+            string n = "";
+            DataTable dt = SQLUtility.GetDataTable(sql);
+            if (dt.Rows.Count > 0 && dt.Columns.Count > 0)
+            {
+                if (dt.Rows[0][0] != DBNull.Value)
+                {
+                    n = dt.Rows[0][0].ToString();
+                }
+            }
+            return n;
         }
     }
 }
