@@ -56,12 +56,13 @@ namespace RecipeWinForms
         {
             DataRow r = dtrecipe.Rows[0];
             int id = (int)r["recipeid"];
-            if (id == 0)
-            {
-                dtpDateDraft.Text = DateTime.Now.ToString("yyyy, MMMM, dd");
-            }
+            
             try 
             {
+                if (id == 0)
+                {
+                    dtpDateDraft.Text = DateTime.Now.ToString("yyyy, MMMM, dd");
+                }
                 Recipe.save(dtrecipe);
             }
             catch (Exception ex)

@@ -3,8 +3,8 @@ as
 begin
 begin try
 begin tran
-delete recipedirection where recipeid = @recipeid
 delete RecipeIngredient where recipeid = @recipeid
+delete recipedirection where recipeid = @recipeid
 delete recipe where recipeid = @recipeid 
 commit
 end try
