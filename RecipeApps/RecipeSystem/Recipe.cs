@@ -66,7 +66,11 @@ namespace RecipeSystem
             }
             else
             {
-                
+                string datedraft = r["DateDraft"].ToString();
+                if (datedraft == "")
+                {
+                    r["DateDraft"] = DateTime.Now.ToString("yyyy, MMMM, dd");
+                }
                 statetement = "insert recipe(RecipeName, calories, CuisineTypeID, DateDraft, UsersID)";
                 statetement += $"select '{r["RecipeName"]}', '{r["Calories"]}', '{r["CuisineTypeid"]}', '{r["DateDraft"]}', '{r["usersID"]}'";
             }

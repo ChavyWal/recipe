@@ -50,7 +50,7 @@ Create table dbo.Recipe(
 			else 'Draft'
 		END persisted,
 	RecipePicture As CONCAT('Recipe','_',replace(RecipeName,' ','_'),'.JPG') persisted,
-	constraint ck_Recipe_Datedraft_is_less_then_Date_published_and_datearchived check(datedraft <= Datepublished or datedraft <= DateArchived),
+	constraint ck_Recipe_Datedraft_is_less_then_Date_published_and_datearchived check(datedraft <= Datepublished and datedraft <= DateArchived),
 	constraint ck_Datepublished_should_be_less_then_Datearchived check(Datepublished < = Datearchived)
 )
 go 
