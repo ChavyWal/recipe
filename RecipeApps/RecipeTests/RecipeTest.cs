@@ -45,7 +45,27 @@ namespace RecipeTests
         [Test]
         public void DeleteRecipe()
         {
-            DataTable dt = SQLUtility.GetDataTable("select top 1 r.RecipeID, r.RecipeName, c.CuisineType, r.Cuisinetypeid, r.usersid, r.Calories, r.DateDraft, r.DatePublished, r.DateArchived, r.CurrentStatus, r.RecipePicture, u.UserName from recipe r join CuisineType c on c.CuisineTypeID = r.CuisineTypeID join users u on u.UsersID = r.UsersID left join RecipeDirection rd on r.RecipeID = rd.recipeid left join recipeingredient ri on r.recipeid = ri.recipeid left join mealcourserecipe mr on r.recipeid = mr.recipeid  left join cookbookRecipe cr on r.recipeid = cr.recipeid where rd.recipedirectionid is null and ri.recipeingredientid is null and mr.mealcourserecipeid is null and cr.cookbookrecipeid is null");
+            DataTable dt = SQLUtility.GetDataTable(@"select top 1 
+                r.RecipeID, r.RecipeName, c.CuisineType, 
+                r.Cuisinetypeid, r.usersid, r.Calories, 
+                r.DateDraft, r.DatePublished, r.DateArchived, 
+                r.CurrentStatus, r.RecipePicture, u.UserName 
+                from recipe r 
+                join CuisineType c 
+                on c.CuisineTypeID = r.CuisineTypeID 
+                join users u on u.UsersID = r.UsersID 
+                left join RecipeDirection rd 
+                on r.RecipeID = rd.recipeid 
+                left join recipeingredient ri 
+                on r.recipeid = ri.recipeid 
+                left join mealcourserecipe mr 
+                on r.recipeid = mr.recipeid  
+                left join cookbookRecipe cr 
+                on r.recipeid = cr.recipeid 
+                where rd.recipedirectionid is null 
+                and ri.recipeingredientid is null 
+                and mr.mealcourserecipeid is null 
+                and cr.cookbookrecipeid is null");
             int recipeid = 0;
             string recipedesc = "";
             if (dt.Rows.Count > 0)
