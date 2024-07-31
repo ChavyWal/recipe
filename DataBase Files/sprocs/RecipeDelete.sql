@@ -1,18 +1,29 @@
-Create or alter procedure dbo.RecipeDelete(@recipeid int)
+Create or alter procedure dbo.RecipeDelete(
+@recipeid int,
+@Message varchar(500) = '' output
+)
 as
-begin
-begin try
-begin tran
-delete recipedirection where recipeid = @recipeid
-delete RecipeIngredient where recipeid = @recipeid
-delete recipe where recipeid = @recipeid 
-commit
-end try
-begin catch
-rollback;
-throw
-end catch
-end
+	begin
+			declare @return int = 0
+			if exists(select * from Recipe r where r.recipeid = @recipeid and (r.CurrentStatus <> 'draft' or DateDiff(DAY, r.DateArchived, CURRENT_TIMESTAMP) <= 30))
+			begin
+			select @return = 1, @Message = 'Cannot delete recipe where currentstatus does not = draft or if it''s <=  thirty days in archived.'
+			goto finished
+			end
+		begin try
+		begin tran
+			delete recipedirection where recipeid = @recipeid
+			delete RecipeIngredient where recipeid = @recipeid
+			delete recipe where recipeid = @recipeid 
+		commit
+		end try
+		begin catch
+			rollback;
+			throw
+		end catch
+		Finished:
+		return @return
+	end
 go
 
 --without related records

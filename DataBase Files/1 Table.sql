@@ -34,8 +34,10 @@ go
 
 Create table dbo.Recipe(
 	RecipeID int not null identity primary key,
-	UsersID int not null constraint f_Recipe_User Foreign Key References users(UsersID),
-	CuisineTypeID int not null Constraint f_Recipe_CuisineType foreign key references CuisineType(CuisineTypeID),
+	UsersID int not null constraint ck_Recipe_Users_cannot_be_blank check(usersid <> '')
+		constraint f_Recipe_User Foreign Key References users(UsersID),
+	CuisineTypeID int not null constraint ck_Recipe_cuisine_Type_cannot_be_blank check(CuisineTypeId <> '')
+		Constraint f_Recipe_CuisineType foreign key references CuisineType(CuisineTypeID),
 	RecipeName Varchar (30) not null constraint ck_Recipe_RecipeName_cannot_be_blank check(RecipeName <> '')
 		Constraint u_Recipe_RecipeName unique,
 	Calories Int not null constraint ck_Calories_cannot_be_zero_or_negative check(calories > 0 ),
