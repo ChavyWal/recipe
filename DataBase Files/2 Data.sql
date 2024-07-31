@@ -28,7 +28,7 @@
 
     ;
     with x as (
-            select UserName = 'F. Taylor', CuisineType = 'American', RecipeName = 'Chocolate Chip Cookies', Calories = 25,DateDraft = '2024/02/02 10:15:26', DatePublished = '2024/02/10 11:15:30', DateArchived = null
+            select UserName = 'F. Taylor', CuisineType = 'American', RecipeName = 'Chocolate Chip Cookies', Calories = 25,DateDraft = '2024/02/02 10:15:26', DatePublished = '2024/02/10 11:15:30', DateArchived = '2024/07-25'
         union SELECT 'Sherry F.', 'French', 'Apple Yogurt Smoothie', 30, '2023/11/04 05:12:45', null, null
         union select 'Sharon', 'English', 'Cheese Bread', 60,'2024/01/29 09:15:15', null, '2024/02/05 13:25:40'
         union select 'H. Doritos', 'American', 'Butter Muffins', 254, '2023/09/13 07:23:23', null, null
@@ -220,12 +220,12 @@ Insert RecipeIngredient (RecipeID, IngredientID, MeasurmentTypeID, IngredientAmo
         --union select 'Breakfast bash', 'Appetizer', 'Apple Yogurt Smoothie', 1
         union select 'Dining Dinner', 'Appetizer', 'Cherry Pops', 1
         union select 'Dining Dinner', 'Main Course', 'spicy Fries', 1
-        union select 'Dining Dinner', 'Dessert', 'Chocolate Smores', 1
+        --union select 'Dining Dinner', 'Dessert', 'Chocolate Smores', 1
         union select 'The Perfect Lunch', 'Main Course', 'Cheese Bread', 1
-        union select 'The Perfect Lunch', 'Dessert', 'Chocolate Smores', 1
+        --union select 'The Perfect Lunch', 'Dessert', 'Chocolate Smores', 1
         --union select 'The Perfect Lunch', 'Dessert', 'Apple Yogurt Smoothie', 0
         union select 'Brunch', 'Main Course', 'Butter Muffins', 1 
-        union select 'Brunch', 'Main Course', 'Chocolate Chip Cookies', 0
+        --union select 'Brunch', 'Main Course', 'Chocolate Chip Cookies', 0
         union select 'Brunch', 'Appetizer', 'Cherry Pops', 1
     )
     insert MealCourseRecipe (MealCourseID, RecipeID, Main)
@@ -256,7 +256,7 @@ Insert RecipeIngredient (RecipeID, IngredientID, MeasurmentTypeID, IngredientAmo
 
     ;
     with x as(
-        Select CookBookName = 'Treats for two',RecipeName = 'Chocolate Chip Cookies',RecipeSequence = 1
+        Select CookBookName = 'Treats for two',RecipeName = 'Spicy Fries',RecipeSequence = 1
         --union select 'Treats for two', 'Apple Yogurt Smoothie', 2
         union select 'Treats for two', 'Cheese Bread', 3
         union select 'Treats for two', 'Butter Muffins', 4
@@ -264,8 +264,8 @@ Insert RecipeIngredient (RecipeID, IngredientID, MeasurmentTypeID, IngredientAmo
         --union select 'Food for You', 'Apple Yogurt Smoothie', 2 
         union select 'Food for You', 'Spicy Fries', 3
         union select 'Easy and Pie', 'Cheese Bread', 1
-        union select 'Easy and Pie', 'Chocolate Chip Cookies', 2 
-        union select 'Easy and Pie', 'Chocolate Smores', 3 
+        --union select 'Easy and Pie', 'Chocolate Chip Cookies', 2 
+        --union select 'Easy and Pie', 'Chocolate Smores', 3 
         union select 'Fry and Try', 'Butter Muffins', 1 
         union select 'Fry and Try', 'Spicy Fries', 2 
         --union select 'Fry and Try', 'Apple Yogurt Smoothie', 3 

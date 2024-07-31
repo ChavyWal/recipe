@@ -34,11 +34,11 @@ go
 
 Create table dbo.Recipe(
 	RecipeID int not null identity primary key,
-	UsersID int not null constraint F_Recipe_User Foreign Key References users(UsersID),
-	CuisineTypeID int not null Constraint F_Recipe_CuisineType foreign key references CuisineType(CuisineTypeID),
+	UsersID int not null constraint f_Recipe_User Foreign Key References users(UsersID),
+	CuisineTypeID int not null Constraint f_Recipe_CuisineType foreign key references CuisineType(CuisineTypeID),
 	RecipeName Varchar (30) not null constraint ck_Recipe_RecipeName_cannot_be_blank check(RecipeName <> '')
 		Constraint u_Recipe_RecipeName unique,
-	Calories Int not null constraint CK_Calories_cannot_be_zero_or_negative check(calories > 0 ),
+	Calories Int not null constraint ck_Calories_cannot_be_zero_or_negative check(calories > 0 ),
 	DateDraft DateTime not null Default getdate()
         constraint ck_Recipe_Date_Draft_cannot_be_future_Date check(DateDraft <= getdate()),
 	DatePublished DateTime null constraint ck_Recipe_Date_Published_cannot_be_future_Date check(DatePublished < = getdate()),

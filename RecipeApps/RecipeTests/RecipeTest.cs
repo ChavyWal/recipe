@@ -85,7 +85,22 @@ namespace RecipeTests
         [Test]
         public void CannotDeleteRecipe()
         {
-            DataTable dt = SQLUtility.GetDataTable("select top 1 r.RecipeID, r.RecipeName, c.CuisineType, r.Cuisinetypeid, r.usersid, r.Calories, r.DateDraft, r.DatePublished, r.DateArchived, r.CurrentStatus, r.RecipePicture, u.UserName from recipe r join CuisineType c on c.CuisineTypeID = r.CuisineTypeID join users u on u.UsersID = r.UsersID join RecipeDirection rd on r.RecipeID = rd.recipeid join recipeingredient ri on r.recipeid = ri.recipeid join mealcourserecipe mr on r.recipeid = mr.recipeid  join cookbookRecipe cr on r.recipeid = cr.recipeid ");
+            DataTable dt = SQLUtility.GetDataTable(@"select top 1 
+                r.RecipeID, r.RecipeName, c.CuisineType, 
+                r.Cuisinetypeid, r.usersid, r.Calories, 
+                r.DateDraft, r.DatePublished, r.DateArchived,
+                r.CurrentStatus, r.RecipePicture, u.UserName 
+                from recipe r join CuisineType c 
+                on c.CuisineTypeID = r.CuisineTypeID 
+                join users u on u.UsersID = r.UsersID 
+                join RecipeDirection rd 
+                on r.RecipeID = rd.recipeid 
+                join recipeingredient ri 
+                on r.recipeid = ri.recipeid 
+                join mealcourserecipe mr 
+                on r.recipeid = mr.recipeid  
+                join cookbookRecipe cr 
+                on r.recipeid = cr.recipeid ");
             int recipeid = 0;
             string recipedesc = "";
             if (dt.Rows.Count > 0)
