@@ -130,7 +130,7 @@ namespace RecipeTests
             int cuisinetypeid = (int)dtt.Rows[0]["cuisinetypeid"];
             int usersid = (int)dtt.Rows[0]["usersid"];
             TestContext.WriteLine(" for recipeid " + id + " calories is " + calories + " recipename is " + recipename + " DateDraft is " + datedraft + " cuisinetypeid is " + cuisinetypeid + " usersid is " + usersid);
-            datedraft = "2023 -09-09";
+            datedraft = "1900 -09-09";
             cuisinetypeid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 cuisinetypeid from cuisinetype");
             usersid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 usersid from users");
             calories = calories + 5;
