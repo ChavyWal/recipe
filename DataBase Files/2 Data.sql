@@ -215,13 +215,13 @@ Insert RecipeIngredient (RecipeID, IngredientID, MeasurmentTypeID, IngredientAmo
     on x.CourseType = c.CourseType
 
     ;
-    with x as(    Select MealName = 'Breakfast bash', CourseType = 'Main Course', Recipe = 'Cheese Bread', Main = 1
+    with x as(    Select MealName = 'Breakfast bash', CourseType = 'Main Course', Recipe = 'Spicy Fries', Main = 1
         union select 'Breakfast bash', 'Main Course', 'Butter Muffins', 0
         --union select 'Breakfast bash', 'Appetizer', 'Apple Yogurt Smoothie', 1
         union select 'Dining Dinner', 'Appetizer', 'Cherry Pops', 1
         union select 'Dining Dinner', 'Main Course', 'spicy Fries', 1
         --union select 'Dining Dinner', 'Dessert', 'Chocolate Smores', 1
-        union select 'The Perfect Lunch', 'Main Course', 'Cheese Bread', 1
+        --union select 'The Perfect Lunch', 'Main Course', 'Cheese Bread', 1
         --union select 'The Perfect Lunch', 'Dessert', 'Chocolate Smores', 1
         --union select 'The Perfect Lunch', 'Dessert', 'Apple Yogurt Smoothie', 0
         union select 'Brunch', 'Main Course', 'Butter Muffins', 1 
@@ -258,12 +258,12 @@ Insert RecipeIngredient (RecipeID, IngredientID, MeasurmentTypeID, IngredientAmo
     with x as(
         Select CookBookName = 'Treats for two',RecipeName = 'Spicy Fries',RecipeSequence = 1
         --union select 'Treats for two', 'Apple Yogurt Smoothie', 2
-        union select 'Treats for two', 'Cheese Bread', 3
+        --union select 'Treats for two', 'Cheese Bread', 3
         union select 'Treats for two', 'Butter Muffins', 4
         union select 'Food for You', 'Cherry pops', 1
         --union select 'Food for You', 'Apple Yogurt Smoothie', 2 
         union select 'Food for You', 'Spicy Fries', 3
-        union select 'Easy and Pie', 'Cheese Bread', 1
+        --union select 'Easy and Pie', 'Cheese Bread', 1
         --union select 'Easy and Pie', 'Chocolate Chip Cookies', 2 
         --union select 'Easy and Pie', 'Chocolate Smores', 3 
         union select 'Fry and Try', 'Butter Muffins', 1 

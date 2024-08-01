@@ -1,4 +1,8 @@
 declare @recipeid int
+declare @Message varchar(500)
+
+select daydiff = DateDiff(DAY, r.DateArchived, CURRENT_TIMESTAMP), r.RecipeName from recipe r
+where DateDiff(DAY, r.DateArchived, CURRENT_TIMESTAMP) > 30
 
 select top 1  @recipeid = r.recipeid
 from recipe r
@@ -12,6 +16,8 @@ left join cookbookRecipe cr
 on r.recipeid = cr.recipeid 
 where mr.RecipeID is null
 and cr.RecipeID is null
+and (r.CurrentStatus = 'Draft' or r.CurrentStatus = 'Archived'
+ and DateDiff(DAY, r.DateArchived, CURRENT_TIMESTAMP) > 30)
 order by r.RecipeID
 
 select 'recipe', r.recipeid, r.recipename from recipe r where r.recipeid = @recipeid
@@ -20,7 +26,8 @@ union select 'recipe ingredient',  ri.IngredientID, i.IngredientName from Recipe
 union select 'mealcourserecipe', mr.MealCourseRecipeID, m.MealName from MealCourseRecipe mr join MealCourse mc on mr.MealCourseID = mc.MealCourseID join meal m on mc.MealID = m.MealID where mr.RecipeID = @recipeid
 union select 'cookbookrecipe', cr.CookBookRecipeID, c.CookBookName from CookBookRecipe cr join CookBook c on c.CookBookID = cr.CookBookID where cr.RecipeID = @recipeid
 
-exec RecipeDelete @recipeid = @recipeid
+exec RecipeDelete @recipeid = @recipeid, @message = @Message output
+select @recipeid, @Message
 
 select 'recipe', r.recipeid, r.recipename from recipe r where r.recipeid = @recipeid
 union select 'recipe direction', rd.RecipeDirectionID, rd.Direction from RecipeDirection rd where rd.recipeid = @recipeid
