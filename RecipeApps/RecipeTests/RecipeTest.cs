@@ -65,7 +65,10 @@ namespace RecipeTests
                 where rd.recipedirectionid is null 
                 and ri.recipeingredientid is null 
                 and mr.mealcourserecipeid is null 
-                and cr.cookbookrecipeid is null");
+                and cr.cookbookrecipeid is null
+                and (r.CurrentStatus <> 'Published' or r.CurrentStatus = 'Archived'
+                and DateDiff(DAY, r.DateArchived, CURRENT_TIMESTAMP) > 30)
+                ");
             int recipeid = 0;
             string recipedesc = "";
             if (dt.Rows.Count > 0)
@@ -83,7 +86,7 @@ namespace RecipeTests
         }
 
         [Test]
-        public void CannotDeleteRecipe()
+        public void CannotDeleteRecipewitharchivedlessthanthirtydays()
         {
             DataTable dt = SQLUtility.GetDataTable(@"select top 1 
                 r.RecipeID, r.RecipeName, c.CuisineType, 
@@ -97,13 +100,14 @@ namespace RecipeTests
                 on r.RecipeID = rd.recipeid 
                 join recipeingredient ri 
                 on r.recipeid = ri.recipeid 
-                join mealcourserecipe mr 
+                left join mealcourserecipe mr 
                 on r.recipeid = mr.recipeid  
                 left join cookbookRecipe cr 
                 on r.recipeid = cr.recipeid 
-                 where (r.CurrentStatus = 'Published' or (r.CurrentStatus = 'Archived'
-                    and DateDiff(DAY, r.DateArchived, CURRENT_TIMESTAMP) <= 30)
-                    and cr.cookbookrecipeid is null");
+                where (r.CurrentStatus = 'Published' or r.CurrentStatus = 'Archived'
+                and DateDiff(DAY, r.DateArchived, CURRENT_TIMESTAMP) <= 30)
+                and cr.cookbookrecipeid is null"
+                );
             int recipeid = 0;
             string recipedesc = "";
             if (dt.Rows.Count > 0)
