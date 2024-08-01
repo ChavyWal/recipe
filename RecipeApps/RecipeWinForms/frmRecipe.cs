@@ -19,6 +19,7 @@ namespace RecipeWinForms
     public partial class frmRecipe : Form
     {
         DataTable dtrecipe;
+        BindingSource bindsource = new();
         public frmRecipe()
         {
             InitializeComponent();
@@ -30,20 +31,21 @@ namespace RecipeWinForms
         public void ShowForm(int recipeid)
         {
             dtrecipe = Recipe.Load(recipeid);
+            bindsource.DataSource = dtrecipe;
             if (recipeid == 0)
             {
                 dtrecipe.Rows.Add();
             }
             DataTable dtCuisineType = Recipe.GetCuisineTypelist();
             DataTable dtusers = Recipe.GetUserslist();
-            WindowsFormUtility.SetControlBinding(txtRecipeName, dtrecipe);
+            WindowsFormUtility.SetControlBinding(txtRecipeName, bindsource);
             WindowsFormUtility.SetListBinding(lstCuisineType, dtCuisineType, dtrecipe, "CuisineType");
-            WindowsFormUtility.SetControlBinding(txtCalories, dtrecipe);
-            WindowsFormUtility.SetControlBinding(dtpDateDraft, dtrecipe);
-            WindowsFormUtility.SetControlBinding(txtDatePublished, dtrecipe);
-            WindowsFormUtility.SetControlBinding(txtDateArchived, dtrecipe);
-            WindowsFormUtility.SetControlBinding(lblCurrentStatus, dtrecipe);
-            WindowsFormUtility.SetControlBinding(lblRecipePicture, dtrecipe);
+            WindowsFormUtility.SetControlBinding(txtCalories, bindsource);
+            WindowsFormUtility.SetControlBinding(dtpDateDraft, bindsource);
+            WindowsFormUtility.SetControlBinding(txtDatePublished, bindsource);
+            WindowsFormUtility.SetControlBinding(txtDateArchived, bindsource);
+            WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
+            WindowsFormUtility.SetControlBinding(lblRecipePicture, bindsource);
             lstUser.DataSource = dtusers;
             lstUser.ValueMember = "usersid";
             lstUser.DisplayMember = "userName";

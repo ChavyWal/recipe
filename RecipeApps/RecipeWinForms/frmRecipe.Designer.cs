@@ -69,6 +69,7 @@
             txtDateArchived.Anchor = AnchorStyles.Left;
             txtDateArchived.Location = new Point(158, 217);
             txtDateArchived.Name = "txtDateArchived";
+            txtDateArchived.ReadOnly = true;
             txtDateArchived.Size = new Size(425, 27);
             txtDateArchived.TabIndex = 13;
             // 
@@ -77,6 +78,7 @@
             txtDatePublished.Anchor = AnchorStyles.Left;
             txtDatePublished.Location = new Point(158, 175);
             txtDatePublished.Name = "txtDatePublished";
+            txtDatePublished.ReadOnly = true;
             txtDatePublished.Size = new Size(425, 27);
             txtDatePublished.TabIndex = 12;
             // 
@@ -295,6 +297,7 @@
             // dtpDateDraft
             // 
             dtpDateDraft.Dock = DockStyle.Fill;
+            dtpDateDraft.Enabled = false;
             dtpDateDraft.Location = new Point(158, 129);
             dtpDateDraft.Name = "dtpDateDraft";
             dtpDateDraft.Size = new Size(425, 27);
