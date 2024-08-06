@@ -45,6 +45,7 @@ namespace RecipeTests
         [Test]
         public void DeleteRecipe()
         {
+            InsertnewRecipe();
             DataTable dt = SQLUtility.GetDataTable(@"select top 1 
                 r.RecipeID, r.RecipeName, c.CuisineType, 
                 r.Cuisinetypeid, r.usersid, r.Calories, 

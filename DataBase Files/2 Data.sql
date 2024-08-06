@@ -220,9 +220,9 @@ Insert RecipeIngredient (RecipeID, IngredientID, MeasurmentTypeID, IngredientAmo
         union select 'Breakfast bash', 'Appetizer', 'Apple Yogurt Smoothie', 1
         union select 'Dining Dinner', 'Appetizer', 'Cherry Pops', 1
         union select 'Dining Dinner', 'Main Course', 'spicy Fries', 1
-        union select 'Dining Dinner', 'Dessert', 'Chocolate Smores', 1
+        --union select 'Dining Dinner', 'Dessert', 'Chocolate Smores', 1
         union select 'The Perfect Lunch', 'Main Course', 'Cheese Bread', 1
-        union select 'The Perfect Lunch', 'Dessert', 'Chocolate Smores', 1
+        --union select 'The Perfect Lunch', 'Dessert', 'Chocolate Smores', 1
         union select 'The Perfect Lunch', 'Dessert', 'Apple Yogurt Smoothie', 0
         union select 'Brunch', 'Main Course', 'Butter Muffins', 1 
         union select 'Brunch', 'Main Course', 'Chocolate Chip Cookies', 0
@@ -265,7 +265,7 @@ Insert RecipeIngredient (RecipeID, IngredientID, MeasurmentTypeID, IngredientAmo
         union select 'Food for You', 'Spicy Fries', 3
         union select 'Easy and Pie', 'Cheese Bread', 1
         union select 'Easy and Pie', 'Chocolate Chip Cookies', 2 
-        union select 'Easy and Pie', 'Chocolate Smores', 3 
+        --union select 'Easy and Pie', 'Chocolate Smores', 3 
         union select 'Fry and Try', 'Butter Muffins', 1 
         union select 'Fry and Try', 'Spicy Fries', 2 
         union select 'Fry and Try', 'Apple Yogurt Smoothie', 3 
