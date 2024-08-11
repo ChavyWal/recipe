@@ -30,7 +30,7 @@
     with x as (
             select UserName = 'F. Taylor', CuisineType = 'American', RecipeName = 'Chocolate Chip Cookies', Calories = 25,DateDraft = '2024/02/02 10:15:26', DatePublished = '2024/02/10 11:15:30', DateArchived = '2024/07-25'
         union SELECT 'Sherry F.', 'French', 'Apple Yogurt Smoothie', 30, '2023/11/04 05:12:45', null, null
-        --union select 'Sharon', 'English', 'Cheese Bread', 60,'2024/01/29 09:15:15', null, '2024/02/05 13:25:40'
+        union select 'Sharon', 'English', 'Cheese Bread', 60,'2024/01/29 09:15:15', null, CURRENT_TIMESTAMP - 5
         union select 'H. Doritos', 'American', 'Butter Muffins', 254, '2023/09/13 07:23:23', null, null
         union select 'Sherry F.', 'English', 'Chocolate Smores', 150, '2023/10/25 12:30:55', '2024/01/09 05:43:34', null
         union select 'H. Doritos', 'French', 'Spicy Fries', 240, '2023/12/26 04:22:55', '2024/01/13 05:43:34', '2024/02/05 14:14:14'

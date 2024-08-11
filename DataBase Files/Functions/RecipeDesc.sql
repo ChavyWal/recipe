@@ -16,7 +16,7 @@ begin
 	left join RecipeDirection rd
 	on r.RecipeID = rd.RecipeID
 	where r.RecipeID = @RecipeId
-	group by r.RecipeName, ri.RecipeID, c.CuisineType
+	group by r.RecipeName, c.CuisineType
 	return @value
 end
 go

@@ -67,8 +67,8 @@ namespace RecipeTests
                 and ri.recipeingredientid is null 
                 and mr.mealcourserecipeid is null 
                 and cr.cookbookrecipeid is null
-                and (r.CurrentStatus <> 'Published' or r.CurrentStatus = 'Archived'
-                and DateDiff(DAY, r.DateArchived, CURRENT_TIMESTAMP) > 30)
+                and (r.CurrentStatus <> 'Published' or (r.CurrentStatus = 'Archived'
+                and DateDiff(DAY, r.DateArchived, CURRENT_TIMESTAMP) > 30))
                 ");
             int recipeid = 0;
             string recipedesc = "";

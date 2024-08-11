@@ -2,7 +2,7 @@ create or alter function dbo.CaloriesPerMeal(@Mealid int)
 returns varchar(250)
 as
 begin
-	declare @value varchar(250) = ''
+	declare @value int = 0
 
 	select @Value = 
 	 sum(r.Calories)
