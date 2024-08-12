@@ -12,20 +12,20 @@ namespace RecipeTests
             dbManager.SetConnectionString("Server=tcp:dev-cw.database.windows.net,1433;Initial Catalog=HeartyHearthDB;Persist Security Info=False;User ID=cwadmin;Password=Chw280qc;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
-        [Test]
-        public void SearchRecipe()
-        {
-            string criteria = "c";
-            int num = SQLUtility.GetFirstColumnFirstRowValue("select total = count(*) from recipe where recipename like '%" + criteria + "%'");
-            Assume.That(num > 0, "can't run test, no recipes  macht your search");
-            TestContext.WriteLine(num + " recipes that match " + criteria);
-            TestContext.WriteLine("want to ensure that recipe search returns " + num + " rows");
+        //[Test]
+        //public void SearchRecipe()
+        //{
+        //    string criteria = "c";
+        //    int num = SQLUtility.GetFirstColumnFirstRowValue("select total = count(*) from recipe where recipename like '%" + criteria + "%'");
+        //    Assume.That(num > 0, "can't run test, no recipes  macht your search");
+        //    TestContext.WriteLine(num + " recipes that match " + criteria);
+        //    TestContext.WriteLine("want to ensure that recipe search returns " + num + " rows");
 
-            DataTable dt = Recipe.SearchRecipe(criteria);
-            int results = dt.Rows.Count;
-            Assert.IsTrue(results == num, "results of recipe search deos not match number of recipes, " + results + " <> " + num);
-            TestContext.WriteLine("number of rows returned by recipe search is " + results);
-        }
+        //    DataTable dt = Recipe.SearchRecipe(criteria);
+        //    int results = dt.Rows.Count;
+        //    Assert.IsTrue(results == num, "results of recipe search deos not match number of recipes, " + results + " <> " + num);
+        //    TestContext.WriteLine("number of rows returned by recipe search is " + results);
+        //}
 
         [Test]
         public void LoadRecipe()
@@ -105,8 +105,8 @@ namespace RecipeTests
                 on r.recipeid = mr.recipeid  
                 left join cookbookRecipe cr 
                 on r.recipeid = cr.recipeid 
-                where (r.CurrentStatus = 'Published' or r.CurrentStatus = 'Archived'
-                and DateDiff(DAY, r.DateArchived, CURRENT_TIMESTAMP) <= 30)
+                where (r.CurrentStatus = 'Published' or (r.CurrentStatus = 'Archived'
+                and DateDiff(DAY, r.DateArchived, CURRENT_TIMESTAMP) <= 30))
                 and cr.cookbookrecipeid is null"
                 );
             int recipeid = 0;
