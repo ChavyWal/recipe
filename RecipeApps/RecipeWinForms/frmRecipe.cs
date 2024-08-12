@@ -28,7 +28,7 @@ namespace RecipeWinForms
             btnDelete.Click += BtnDelete_Click;
         }
 
-        public void ShowForm(int recipeid)
+        public void LoadForm(int recipeid)
         {
             dtrecipe = Recipe.Load(recipeid);
             bindsource.DataSource = dtrecipe;
@@ -52,7 +52,7 @@ namespace RecipeWinForms
             lstUser.DataBindings.Add("SelectedValue", dtrecipe, lstUser.ValueMember, false, DataSourceUpdateMode.OnPropertyChanged);
             DataRow r = dtrecipe.Rows[0];
             dtpDateDraft.Text = DateTime.Now.ToString("yyyy, MMMM, dd");
-            this.Show();
+            
         }
 
         private void Save()

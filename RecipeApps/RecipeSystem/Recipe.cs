@@ -12,13 +12,21 @@ namespace RecipeSystem
     //SQLUtility.ConnectionString = ;
     public class Recipe
     {
-        public static DataTable SearchRecipe(string recipename)
+        public static DataTable SearchRecipe()
         {
             DataTable dt = new();
             SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeGet");
-            SQLUtility.Setparamvalue(cmd,"@recipename" ,recipename);
+            SQLUtility.Setparamvalue(cmd,"@recipename" ,"%");
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
+        }
+
+        public static DataTable CookbookGet()
+        {
+            DataTable dt = new();
+            SqlCommand cmd = SQLUtility.GetSqlCommand("CookbookGet");
+            SQLUtility.Setparamvalue(cmd, "@All", 1);
+            return SQLUtility.GetDataTable(cmd);
         }
 
         public static DataTable Load(int recipeid)
@@ -48,6 +56,12 @@ namespace RecipeSystem
             return dt;
         }
 
+        public static DataTable RecipeMealandCookbookCount()
+        {
+            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeMealandCookbookCount");
+            return SQLUtility.GetDataTable(cmd);
+        }
+
         public static void save(DataTable dtrecipe)
         {
             if (dtrecipe.Rows.Count == 0)
@@ -65,5 +79,6 @@ namespace RecipeSystem
             SQLUtility.Setparamvalue(cmd, "@recipeid", id);
             SQLUtility.ExecuteSQL(cmd);
         }
+
     }
 }

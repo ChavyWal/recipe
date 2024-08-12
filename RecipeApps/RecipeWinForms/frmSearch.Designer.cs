@@ -69,7 +69,7 @@
             tblSearch.Name = "tblSearch";
             tblSearch.RowCount = 1;
             tblSearch.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblSearch.Size = new Size(465, 36);
+            tblSearch.Size = new Size(471, 36);
             tblSearch.TabIndex = 0;
             // 
             // txtSearch
@@ -85,9 +85,9 @@
             // 
             btnSearch.Dock = DockStyle.Fill;
             btnSearch.Font = new Font("Segoe UI", 10.8F);
-            btnSearch.Location = new Point(157, 3);
+            btnSearch.Location = new Point(159, 3);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(148, 30);
+            btnSearch.Size = new Size(150, 30);
             btnSearch.TabIndex = 0;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
@@ -95,9 +95,9 @@
             // btnNew
             // 
             btnNew.Dock = DockStyle.Fill;
-            btnNew.Location = new Point(311, 3);
+            btnNew.Location = new Point(315, 3);
             btnNew.Name = "btnNew";
-            btnNew.Size = new Size(151, 30);
+            btnNew.Size = new Size(153, 30);
             btnNew.TabIndex = 3;
             btnNew.Text = "New";
             btnNew.UseVisualStyleBackColor = true;
