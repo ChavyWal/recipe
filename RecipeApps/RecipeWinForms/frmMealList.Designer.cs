@@ -65,7 +65,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(tblMain);
             Name = "frmMealList";
-            Text = "frmMealList";
+            Text = "Meal List";
             tblMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gMeal).EndInit();
             ResumeLayout(false);

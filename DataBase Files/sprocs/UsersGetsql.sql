@@ -7,6 +7,8 @@ begin
 	where u.UsersID = @usersid
 	or @All = 1
 	or u.UserName like '%' + @Username + '%'
+	union select 0, '', '', ''
+	order by UsersID
 end
 go
 

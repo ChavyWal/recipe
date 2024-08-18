@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecipeSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace RecipeWinForms
         public frmMealList()
         {
             InitializeComponent();
+            BindData();
+        }
+
+        private void BindData()
+        {
+            gMeal.DataSource = Recipe.MealGet();
         }
     }
 }

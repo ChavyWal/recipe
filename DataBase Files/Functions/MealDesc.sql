@@ -1,9 +1,8 @@
 create or alter function dbo.CaloriesPerMeal(@Mealid int)
-returns varchar(250)
+returns int
 as
 begin
 	declare @value int = 0
-
 	select @Value = 
 	 sum(r.Calories)
 	from MealCourse mc

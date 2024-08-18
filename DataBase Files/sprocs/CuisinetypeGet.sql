@@ -7,6 +7,8 @@ begin
 	where c.CuisineTypeID = @CuisineTypeid
 	or @All = 1
 	or c.CuisineType like '%' +  @CuisineType + '%'
+	union select 0, ''
+	order by CuisineTypeID
 end
 go
 

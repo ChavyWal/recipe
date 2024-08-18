@@ -2,8 +2,12 @@ create or alter procedure dbo.RecipeGet(@Recipeid int = 0, @All bit = 0, @Recipe
 as 
 begin
 	select @Recipename = nullif(@recipename, '')
-	select r.RecipeID, r.RecipeName, r.Calories, r.CuisineTypeID, r.UsersID, r.DateDraft, r.DatePublished, r.DateArchived, r.CurrentStatus, r.RecipePicture 
+	select r.RecipeID,r.RecipeName, r.CurrentStatus,u.UsersID, c.CuisineTypeID, u.UserName ,r.Calories, NumIngredients = dbo.IngredientPerRecipe(r.recipeid), c.CuisineType, r.DateDraft, r.DatePublished, r.DateArchived,  r.RecipePicture 
 	from recipe r
+	join users u 
+	on r.UsersID = u.UsersID
+	join CuisineType c
+	on c.CuisineTypeID = r.CuisineTypeID
 	where r.recipeid = @Recipeid
 	or @All = 1
 	or  r.RecipeName like  '%'+ @Recipename + '%'

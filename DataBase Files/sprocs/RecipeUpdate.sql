@@ -10,7 +10,7 @@ create or alter proc dbo.RecipeUpdate(
 )
 as
 begin
-select @RecipeID = isnull(@recipeid, 0), @DateDraft = isnull(@DateDraft, CURRENT_TIMESTAMP)
+select @RecipeID = isnull(@recipeid, 0), @DateDraft = isnull(@DateDraft, CURRENT_TIMESTAMP), @DateArchived = nullif(@DateArchived, '')
 
 if @RecipeID = 0
 	begin

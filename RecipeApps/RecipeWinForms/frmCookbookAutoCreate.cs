@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecipeSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,22 @@ namespace RecipeWinForms
         public frmCookbookAutoCreate()
         {
             InitializeComponent();
+            BindUsersList();
+            btnCreateCookbook.Click += BtnCreateCookbook_Click;
+        }
+
+        private void BtnCreateCookbook_Click(object? sender, EventArgs e)
+        {
+          
+        }
+
+        private void BindUsersList()
+        {
+
+            DataTable dtusers = Recipe.GetUserslist();
+            lstUsers.DataSource = dtusers;
+            lstUsers.ValueMember = "usersid";
+            lstUsers.DisplayMember = "userName";
         }
     }
 }

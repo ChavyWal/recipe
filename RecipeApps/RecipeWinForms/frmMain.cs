@@ -75,7 +75,6 @@ namespace RecipeWinForms
                 {
                     frmCookbookAutoCreate f = new();
                     newfrm = f;
-                    
                 }
                 else if (frmtype == typeof(frmMealList))
                 {
@@ -87,12 +86,20 @@ namespace RecipeWinForms
                 {
                     frmRecipeForm f = new();
                     newfrm = f;
-                    
+                    f.LoadRecipeForm(pkvalue);
+
                 }
                 else if (frmtype == typeof(frmCookbook))
                 {
                     frmCookbook f = new();
                     newfrm = f;
+                    f.LoadCookbookForm(pkvalue);
+                }
+                else if (frmtype == typeof(frmChangeStatus))
+                {
+                    frmChangeStatus f = new();
+                    newfrm = f;
+                    f.LoadRecipeChangeStatus(pkvalue);
                 }
                 if (newfrm != null)
                 {

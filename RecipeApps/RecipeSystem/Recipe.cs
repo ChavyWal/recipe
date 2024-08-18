@@ -16,16 +16,14 @@ namespace RecipeSystem
         {
             DataTable dt = new();
             SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeGet");
-            SQLUtility.Setparamvalue(cmd,"@recipename" ,"%");
+            SQLUtility.Setparamvalue(cmd,"@All" ,1);
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
         }
 
-        public static DataTable CookbookGet()
+        public static DataTable MealGet()
         {
-            DataTable dt = new();
-            SqlCommand cmd = SQLUtility.GetSqlCommand("CookbookGet");
-            SQLUtility.Setparamvalue(cmd, "@All", 1);
+            SqlCommand cmd = SQLUtility.GetSqlCommand("MealGet");
             return SQLUtility.GetDataTable(cmd);
         }
 
@@ -45,6 +43,20 @@ namespace RecipeSystem
            SQLUtility.Setparamvalue(cmd, "@All", 1);
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
+        }
+
+        public static DataTable GetIngredientTable(int recipeid)
+        {
+            SqlCommand cmd = SQLUtility.GetSqlCommand("IngredientGet");
+            SQLUtility.Setparamvalue(cmd, "@Recipeid", recipeid);
+            return SQLUtility.GetDataTable(cmd);
+        }
+
+        public static DataTable GetStepsTable(int recipeid)
+        {
+            SqlCommand cmd = SQLUtility.GetSqlCommand("StepsGet");
+            SQLUtility.Setparamvalue(cmd, "@Recipeid", recipeid);
+            return SQLUtility.GetDataTable(cmd);
         }
 
         public static DataTable GetUserslist()

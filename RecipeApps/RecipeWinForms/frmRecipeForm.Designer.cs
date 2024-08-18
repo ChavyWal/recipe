@@ -44,12 +44,12 @@
             lstUser = new ComboBox();
             lstCuisineType = new ComboBox();
             txtCalories = new TextBox();
-            label7 = new Label();
+            lblCurrentStatus = new Label();
             tblStatus = new TableLayoutPanel();
             lblDateDraftedCaption = new Label();
             lblDatePublishedCaption = new Label();
             lblDateArchivedCaption = new Label();
-            lblDateDrafted = new Label();
+            lblDateDraft = new Label();
             lblDatePublished = new Label();
             lblDateArchived = new Label();
             tcRecipeTabs = new TabControl();
@@ -155,7 +155,7 @@
             tblRecipeInfo.Controls.Add(lstUser, 1, 1);
             tblRecipeInfo.Controls.Add(lstCuisineType, 1, 2);
             tblRecipeInfo.Controls.Add(txtCalories, 1, 3);
-            tblRecipeInfo.Controls.Add(label7, 1, 4);
+            tblRecipeInfo.Controls.Add(lblCurrentStatus, 1, 4);
             tblRecipeInfo.Controls.Add(tblStatus, 1, 5);
             tblRecipeInfo.Dock = DockStyle.Fill;
             tblRecipeInfo.Location = new Point(4, 72);
@@ -274,17 +274,17 @@
             txtCalories.Size = new Size(454, 34);
             txtCalories.TabIndex = 9;
             // 
-            // label7
+            // lblCurrentStatus
             // 
-            label7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label7.AutoSize = true;
-            label7.BackColor = Color.LightGray;
-            label7.BorderStyle = BorderStyle.FixedSingle;
-            label7.Location = new Point(149, 178);
-            label7.Margin = new Padding(6);
-            label7.Name = "label7";
-            label7.Size = new Size(450, 30);
-            label7.TabIndex = 10;
+            lblCurrentStatus.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblCurrentStatus.AutoSize = true;
+            lblCurrentStatus.BackColor = Color.LightGray;
+            lblCurrentStatus.BorderStyle = BorderStyle.FixedSingle;
+            lblCurrentStatus.Location = new Point(149, 178);
+            lblCurrentStatus.Margin = new Padding(6);
+            lblCurrentStatus.Name = "lblCurrentStatus";
+            lblCurrentStatus.Size = new Size(450, 30);
+            lblCurrentStatus.TabIndex = 10;
             // 
             // tblStatus
             // 
@@ -297,7 +297,7 @@
             tblStatus.Controls.Add(lblDateDraftedCaption, 0, 0);
             tblStatus.Controls.Add(lblDatePublishedCaption, 1, 0);
             tblStatus.Controls.Add(lblDateArchivedCaption, 2, 0);
-            tblStatus.Controls.Add(lblDateDrafted, 0, 1);
+            tblStatus.Controls.Add(lblDateDraft, 0, 1);
             tblStatus.Controls.Add(lblDatePublished, 1, 1);
             tblStatus.Controls.Add(lblDateArchived, 2, 1);
             tblStatus.Location = new Point(147, 218);
@@ -342,17 +342,17 @@
             lblDateArchivedCaption.Text = "Archived";
             lblDateArchivedCaption.TextAlign = ContentAlignment.TopCenter;
             // 
-            // lblDateDrafted
+            // lblDateDraft
             // 
-            lblDateDrafted.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            lblDateDrafted.AutoSize = true;
-            lblDateDrafted.BackColor = Color.Silver;
-            lblDateDrafted.BorderStyle = BorderStyle.FixedSingle;
-            lblDateDrafted.Location = new Point(6, 34);
-            lblDateDrafted.Margin = new Padding(6);
-            lblDateDrafted.Name = "lblDateDrafted";
-            lblDateDrafted.Size = new Size(139, 30);
-            lblDateDrafted.TabIndex = 3;
+            lblDateDraft.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblDateDraft.AutoSize = true;
+            lblDateDraft.BackColor = Color.Silver;
+            lblDateDraft.BorderStyle = BorderStyle.FixedSingle;
+            lblDateDraft.Location = new Point(6, 34);
+            lblDateDraft.Margin = new Padding(6);
+            lblDateDraft.Name = "lblDateDraft";
+            lblDateDraft.Size = new Size(139, 30);
+            lblDateDraft.TabIndex = 3;
             // 
             // lblDatePublished
             // 
@@ -420,7 +420,7 @@
             tbSteps.Margin = new Padding(4);
             tbSteps.Name = "tbSteps";
             tbSteps.Padding = new Padding(4);
-            tbSteps.Size = new Size(1039, 313);
+            tbSteps.Size = new Size(597, 313);
             tbSteps.TabIndex = 1;
             tbSteps.Text = "Steps";
             tbSteps.UseVisualStyleBackColor = true;
@@ -433,7 +433,7 @@
             gSteps.Margin = new Padding(4);
             gSteps.Name = "gSteps";
             gSteps.RowHeadersWidth = 51;
-            gSteps.Size = new Size(1031, 305);
+            gSteps.Size = new Size(589, 305);
             gSteps.TabIndex = 0;
             // 
             // frmRecipeForm
@@ -486,12 +486,12 @@
         private ComboBox lstUser;
         private ComboBox lstCuisineType;
         private TextBox txtCalories;
-        private Label label7;
+        private Label lblCurrentStatus;
         private TableLayoutPanel tblStatus;
         private Label lblDateDraftedCaption;
         private Label lblDatePublishedCaption;
         private Label lblDateArchivedCaption;
-        private Label lblDateDrafted;
+        private Label lblDateDraft;
         private Label lblDatePublished;
         private Label lblDateArchived;
     }

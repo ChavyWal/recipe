@@ -52,7 +52,6 @@ namespace RecipeWinForms
             lstUser.DataBindings.Add("SelectedValue", dtrecipe, lstUser.ValueMember, false, DataSourceUpdateMode.OnPropertyChanged);
             DataRow r = dtrecipe.Rows[0];
             dtpDateDraft.Text = DateTime.Now.ToString("yyyy, MMMM, dd");
-            
         }
 
         private void Save()
