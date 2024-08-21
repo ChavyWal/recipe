@@ -10,7 +10,7 @@ create or alter proc dbo.RecipeUpdate(
 )
 as
 begin
-select @RecipeID = isnull(@recipeid, 0), @DateDraft = isnull(@DateDraft, CURRENT_TIMESTAMP), @DateArchived = nullif(@DateArchived, '')
+select @RecipeID = isnull(@recipeid, 0), @DateDraft = isnull(@DateDraft, convert(varchar(10), getutcdate() at time zone 'UTC' at time zone 'Eastern Standard Time')), @DateArchived = nullif(@DateArchived, '')
 
 if @RecipeID = 0
 	begin

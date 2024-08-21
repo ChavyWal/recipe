@@ -1,7 +1,7 @@
 Create or alter proc dbo.CookbookRecipeGet(@Cookbookid int)
 as
 begin
-	select  r.RecipeName, cr.CookBookID , cr.RecipeSequence
+	select r.recipeid, r.RecipeName, cr.CookBookID , cr.RecipeSequence
 	from recipe r 
 	join CookBookRecipe cr
 	on r.RecipeID = cr.RecipeID

@@ -1,4 +1,5 @@
-﻿using CPUWindowsFormFrameWork;
+﻿using CPUFramework;
+using CPUWindowsFormFrameWork;
 using RecipeSystem;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace RecipeWinForms
 {
@@ -18,6 +20,8 @@ namespace RecipeWinForms
         DataTable dtrecipe;
         DataTable dtrecipeaferchange;
         BindingSource bindsource = new();
+        private enum CurrentStatusEnum{Draft, Published, Archived}
+        CurrentStatusEnum currentstatus;
 
         public frmChangeStatus()
         {
@@ -26,8 +30,6 @@ namespace RecipeWinForms
             btnPublished.Click += BtnPublished_Click;
             btnArchived.Click += BtnArchived_Click;
         }
-
-        
 
         public void LoadRecipeChangeStatus(int recipeid)
         {
@@ -40,9 +42,23 @@ namespace RecipeWinForms
             }
             WindowsFormUtility.SetControlBinding(lblDateArchived, bindsource);
             WindowsFormUtility.SetControlBinding(lblRecipeName, bindsource);
-            WindowsFormUtility.SetControlBinding(lblCurrentStatus, bindsource);
+            WindowsFormUtility.SetControlBinding(lblConcatCurrentStatus, bindsource);
             WindowsFormUtility.SetControlBinding(lblDateDraft, bindsource);
             WindowsFormUtility.SetControlBinding(lblDatePublished, bindsource);
+            string s = dtrecipe.Rows[0]["CurrentStatus"].ToString();
+            switch (s)
+            {
+                case "Archived":
+                    currentstatus = CurrentStatusEnum.Archived;
+                    break;
+                case "Published":
+                    currentstatus = CurrentStatusEnum.Published;
+                    break;
+                case "Draft":
+                    currentstatus = CurrentStatusEnum.Draft;
+                    break;
+            }
+            EnableDisable();
         }
 
         private void Save()
@@ -57,57 +73,66 @@ namespace RecipeWinForms
             }
         }
 
-        private void BtnArchived_Click(object? sender, EventArgs e)
+        private void ChangeStatusPrompt(string status)
         {
-            lblDateArchived.Text = DateTime.Now.ToString();
-            Save();
-            dtrecipe = Recipe.Load(id);
-            bindsource.DataSource = dtrecipe;
+            var response = MessageBox.Show("Are you sure you want to change this recipe to " + status, Application.ProductName, MessageBoxButtons.YesNo);
+            if (response == DialogResult.No)
+            {
+                return;
+            }
+            else
+            {
+                switch (currentstatus)
+                {
+                    case CurrentStatusEnum.Archived:
+                        lblDateArchived.Text = DateTime.Now.ToString();
+                        break;
+                    case CurrentStatusEnum.Published:
+                        lblDateArchived.CausesValidation = true;
+                        lblDateArchived.DataBindings["Text"].NullValue = "";
+                        lblDateArchived.Text = "";
+                        lblDatePublished.Text = DateTime.Now.ToString();
+                        break;
+                    case CurrentStatusEnum.Draft:
+                        lblDateArchived.CausesValidation = true;
+                        lblDateArchived.DataBindings["Text"].NullValue = "";
+                        lblDateArchived.Text = "";
+                        lblDatePublished.CausesValidation = true;
+                        lblDatePublished.DataBindings["Text"].NullValue = "";
+                        lblDatePublished.Text = "";
+                        lblDateDraft.Text = DateTime.Now.ToString();
+                        break;
+                }
+                Save();
+                dtrecipe = Recipe.Load(id);
+                bindsource.DataSource = dtrecipe;
+                EnableDisable();
+            }
         }
 
         private void EnableDisable()
         {
-            lblDateDraft.Enabled = false;
-            lblDateArchived.Enabled = false;
-            lblDatePublished.Enabled = false;
+            btnDraft.Enabled = currentstatus == CurrentStatusEnum.Draft ? false : true;
+            btnArchived.Enabled = currentstatus == CurrentStatusEnum.Archived ? false : true;
+            btnPublished.Enabled = currentstatus == CurrentStatusEnum.Published ? false : true;
         }
 
-        private void RefreshChangeStatus(DataTable trecipe, int idr)
+        private void BtnArchived_Click(object? sender, EventArgs e)
         {
-            Recipe.save(trecipe);
-            trecipe = Recipe.Load(idr);
-            bindsource.DataSource = trecipe;
+            currentstatus = CurrentStatusEnum.Archived;
+            ChangeStatusPrompt("Archived");
         }
-
+        
         private void BtnPublished_Click(object? sender, EventArgs e)
         {
-            //DateTime? date = null;
-            //lblDateArchived.Text = date.ToString();
-            ////dtrecipe.AcceptChanges();
-            //Save();
-            //dtrecipe = Recipe.Load(id);
-            ////bindsource.DataSource = dtrecipe;
-            //;
-
-            //lblDatePublished.Text = DateTime.Now.ToString();
-            //Recipe.save(dtrecipe);
-            //dtrecipe = Recipe.Load(id);
-            //bindsource.DataSource = dtrecipe;
+            currentstatus = CurrentStatusEnum.Published;
+            ChangeStatusPrompt("Published");
         }
 
         private void BtnDraft_Click(object? sender, EventArgs e)
         {
-            //lblDateArchived.Text = "";
-            //lblDatePublished.Text = "";
-            //Recipe.save(dtrecipe);
-            //dtrecipe = Recipe.Load(id);
-            //bindsource.DataSource = dtrecipe;
-
-            //lblDateDraft.Text = DateTime.Now.ToString();
-            //Recipe.save(dtrecipe);
-            //dtrecipe = Recipe.Load(id);
-            //bindsource.DataSource = dtrecipe;
-
+            currentstatus = CurrentStatusEnum.Draft;
+            ChangeStatusPrompt("Draft");
         }
     }
 }

@@ -36,8 +36,8 @@ namespace RecipeWinForms
             {
                 dtrecipe.Rows.Add();
             }
-            DataTable dtCuisineType = Recipe.GetCuisineTypelist();
-            DataTable dtusers = Recipe.GetUserslist();
+            DataTable dtCuisineType = Recipe.GetCuisineTypelist(true);
+            DataTable dtusers = Recipe.GetUserslist(true);
             WindowsFormUtility.SetControlBinding(txtRecipeName, bindsource);
             WindowsFormUtility.SetListBinding(lstCuisineType, dtCuisineType, dtrecipe, "CuisineType");
             WindowsFormUtility.SetControlBinding(txtCalories, bindsource);

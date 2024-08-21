@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             tblMain = new TableLayoutPanel();
-            flpMain = new FlowLayoutPanel();
+            flpRadioButtons = new FlowLayoutPanel();
             rdbUsers = new RadioButton();
             rdbCuisineType = new RadioButton();
             rdbIngredients = new RadioButton();
-            rdbMeasurments = new RadioButton();
+            rdbMeasurmentType = new RadioButton();
             rdbCourses = new RadioButton();
             tblData = new TableLayoutPanel();
             gDataMaintenance = new DataGridView();
             btnSave = new Button();
             tblMain.SuspendLayout();
-            flpMain.SuspendLayout();
+            flpRadioButtons.SuspendLayout();
             tblData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gDataMaintenance).BeginInit();
             SuspendLayout();
@@ -49,30 +49,30 @@
             tblMain.ColumnCount = 2;
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.825882F));
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 67.17412F));
-            tblMain.Controls.Add(flpMain, 0, 0);
+            tblMain.Controls.Add(flpRadioButtons, 0, 0);
             tblMain.Controls.Add(tblData, 1, 0);
             tblMain.Dock = DockStyle.Fill;
             tblMain.Location = new Point(0, 0);
-            tblMain.Margin = new Padding(4, 4, 4, 4);
+            tblMain.Margin = new Padding(4);
             tblMain.Name = "tblMain";
             tblMain.RowCount = 1;
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tblMain.Size = new Size(1051, 630);
             tblMain.TabIndex = 0;
             // 
-            // flpMain
+            // flpRadioButtons
             // 
-            flpMain.Controls.Add(rdbUsers);
-            flpMain.Controls.Add(rdbCuisineType);
-            flpMain.Controls.Add(rdbIngredients);
-            flpMain.Controls.Add(rdbMeasurments);
-            flpMain.Controls.Add(rdbCourses);
-            flpMain.Dock = DockStyle.Fill;
-            flpMain.FlowDirection = FlowDirection.TopDown;
-            flpMain.Location = new Point(3, 3);
-            flpMain.Name = "flpMain";
-            flpMain.Size = new Size(339, 624);
-            flpMain.TabIndex = 0;
+            flpRadioButtons.Controls.Add(rdbUsers);
+            flpRadioButtons.Controls.Add(rdbCuisineType);
+            flpRadioButtons.Controls.Add(rdbIngredients);
+            flpRadioButtons.Controls.Add(rdbMeasurmentType);
+            flpRadioButtons.Controls.Add(rdbCourses);
+            flpRadioButtons.Dock = DockStyle.Fill;
+            flpRadioButtons.FlowDirection = FlowDirection.TopDown;
+            flpRadioButtons.Location = new Point(3, 3);
+            flpRadioButtons.Name = "flpRadioButtons";
+            flpRadioButtons.Size = new Size(339, 624);
+            flpRadioButtons.TabIndex = 0;
             // 
             // rdbUsers
             // 
@@ -106,15 +106,15 @@
             rdbIngredients.Text = "Ingredients";
             rdbIngredients.UseVisualStyleBackColor = true;
             // 
-            // rdbMeasurments
+            // rdbMeasurmentType
             // 
-            rdbMeasurments.AutoSize = true;
-            rdbMeasurments.Location = new Point(3, 117);
-            rdbMeasurments.Name = "rdbMeasurments";
-            rdbMeasurments.Size = new Size(160, 32);
-            rdbMeasurments.TabIndex = 3;
-            rdbMeasurments.Text = "Measurements";
-            rdbMeasurments.UseVisualStyleBackColor = true;
+            rdbMeasurmentType.AutoSize = true;
+            rdbMeasurmentType.Location = new Point(3, 117);
+            rdbMeasurmentType.Name = "rdbMeasurmentType";
+            rdbMeasurmentType.Size = new Size(160, 32);
+            rdbMeasurmentType.TabIndex = 3;
+            rdbMeasurmentType.Text = "Measurements";
+            rdbMeasurmentType.UseVisualStyleBackColor = true;
             // 
             // rdbCourses
             // 
@@ -171,12 +171,12 @@
             ClientSize = new Size(1051, 630);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmDataMaintenance";
             Text = "Data Maintenance";
             tblMain.ResumeLayout(false);
-            flpMain.ResumeLayout(false);
-            flpMain.PerformLayout();
+            flpRadioButtons.ResumeLayout(false);
+            flpRadioButtons.PerformLayout();
             tblData.ResumeLayout(false);
             tblData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)gDataMaintenance).EndInit();
@@ -186,11 +186,11 @@
         #endregion
 
         private TableLayoutPanel tblMain;
-        private FlowLayoutPanel flpMain;
+        private FlowLayoutPanel flpRadioButtons;
         private RadioButton rdbUsers;
         private RadioButton rdbCuisineType;
         private RadioButton rdbIngredients;
-        private RadioButton rdbMeasurments;
+        private RadioButton rdbMeasurmentType;
         private RadioButton rdbCourses;
         private TableLayoutPanel tblData;
         private DataGridView gDataMaintenance;

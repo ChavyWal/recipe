@@ -30,7 +30,7 @@
         {
             tblMain = new TableLayoutPanel();
             lblRecipeName = new Label();
-            lblCurrentStatus = new Label();
+            lblConcatCurrentStatus = new Label();
             tblDates = new TableLayoutPanel();
             lblStatusDates = new Label();
             lblDraftedCaption = new Label();
@@ -53,7 +53,7 @@
             tblMain.ColumnCount = 1;
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblMain.Controls.Add(lblRecipeName, 0, 0);
-            tblMain.Controls.Add(lblCurrentStatus, 0, 1);
+            tblMain.Controls.Add(lblConcatCurrentStatus, 0, 1);
             tblMain.Controls.Add(tblDates, 0, 2);
             tblMain.Controls.Add(tblStatusButtons, 0, 3);
             tblMain.Dock = DockStyle.Fill;
@@ -78,17 +78,17 @@
             lblRecipeName.TabIndex = 0;
             lblRecipeName.TextAlign = ContentAlignment.TopCenter;
             // 
-            // lblCurrentStatus
+            // lblConcatCurrentStatus
             // 
-            lblCurrentStatus.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            lblCurrentStatus.AutoSize = true;
-            lblCurrentStatus.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCurrentStatus.Location = new Point(3, 125);
-            lblCurrentStatus.Name = "lblCurrentStatus";
-            lblCurrentStatus.Size = new Size(677, 31);
-            lblCurrentStatus.TabIndex = 1;
-            lblCurrentStatus.Text = "Current Status:";
-            lblCurrentStatus.TextAlign = ContentAlignment.TopCenter;
+            lblConcatCurrentStatus.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lblConcatCurrentStatus.AutoSize = true;
+            lblConcatCurrentStatus.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblConcatCurrentStatus.Location = new Point(3, 125);
+            lblConcatCurrentStatus.Name = "lblConcatCurrentStatus";
+            lblConcatCurrentStatus.Size = new Size(677, 31);
+            lblConcatCurrentStatus.TabIndex = 1;
+            lblConcatCurrentStatus.Text = "Current Status:";
+            lblConcatCurrentStatus.TextAlign = ContentAlignment.TopCenter;
             // 
             // tblDates
             // 
@@ -257,7 +257,7 @@
 
         private TableLayoutPanel tblMain;
         private Label lblRecipeName;
-        private Label lblCurrentStatus;
+        private Label lblConcatCurrentStatus;
         private TableLayoutPanel tblDates;
         private TableLayoutPanel tblStatusButtons;
         private Label lblStatusDates;

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             tblMain = new TableLayoutPanel();
-            lstRecipes = new ComboBox();
+            lstRecipeName = new ComboBox();
             btnClone = new Button();
             tblMain.SuspendLayout();
             SuspendLayout();
@@ -40,7 +40,7 @@
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.2118645F));
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 74.78814F));
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 129F));
-            tblMain.Controls.Add(lstRecipes, 1, 0);
+            tblMain.Controls.Add(lstRecipeName, 1, 0);
             tblMain.Controls.Add(btnClone, 1, 1);
             tblMain.Dock = DockStyle.Fill;
             tblMain.Location = new Point(0, 0);
@@ -52,15 +52,15 @@
             tblMain.Size = new Size(602, 278);
             tblMain.TabIndex = 0;
             // 
-            // lstRecipes
+            // lstRecipeName
             // 
-            lstRecipes.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lstRecipes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lstRecipes.FormattingEnabled = true;
-            lstRecipes.Location = new Point(122, 95);
-            lstRecipes.Name = "lstRecipes";
-            lstRecipes.Size = new Size(347, 36);
-            lstRecipes.TabIndex = 0;
+            lstRecipeName.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lstRecipeName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lstRecipeName.FormattingEnabled = true;
+            lstRecipeName.Location = new Point(122, 94);
+            lstRecipeName.Name = "lstRecipeName";
+            lstRecipeName.Size = new Size(347, 36);
+            lstRecipeName.TabIndex = 0;
             // 
             // btnClone
             // 
@@ -90,7 +90,7 @@
         #endregion
 
         private TableLayoutPanel tblMain;
-        private ComboBox lstRecipes;
+        private ComboBox lstRecipeName;
         private Button btnClone;
     }
 }

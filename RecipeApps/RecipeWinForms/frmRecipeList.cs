@@ -34,7 +34,7 @@ namespace RecipeWinForms
             gRecipeList.DataSource = Recipe.SearchRecipe();
             foreach (DataGridViewColumn col in gRecipeList.Columns)
             {
-                if (col.Name.StartsWith("UsersID") || col.Name.StartsWith("CuisineTypeID") || col.Name.StartsWith("CuisineType") || col.Name.StartsWith("DateDraft") || col.Name.StartsWith("DatePublished") || col.Name.StartsWith("DateArchived") || col.Name.StartsWith("RecipePicture"))
+                if (col.Name.StartsWith("UsersID") || col.Name.StartsWith("CuisineTypeID") || col.Name.StartsWith("CuisineType") || col.Name.StartsWith("DateDraft") || col.Name.StartsWith("DatePublished") || col.Name.StartsWith("DateArchived") || col.Name.StartsWith("RecipePicture") || col.Name.StartsWith("ConcatCurrentStatus"))
                 {
                     col.Visible = false;
                 }

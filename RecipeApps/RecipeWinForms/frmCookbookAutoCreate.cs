@@ -1,4 +1,5 @@
-﻿using RecipeSystem;
+﻿using CPUWindowsFormFrameWork;
+using RecipeSystem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,13 +23,14 @@ namespace RecipeWinForms
 
         private void BtnCreateCookbook_Click(object? sender, EventArgs e)
         {
-          
+            int usersid = WindowsFormUtility.GetIdFromComboBox(lstUsers);
+            DataMaintenance.AutoCreateCookbook(usersid);
         }
 
         private void BindUsersList()
         {
 
-            DataTable dtusers = Recipe.GetUserslist();
+            DataTable dtusers = Recipe.GetUserslist(true);
             lstUsers.DataSource = dtusers;
             lstUsers.ValueMember = "usersid";
             lstUsers.DisplayMember = "userName";

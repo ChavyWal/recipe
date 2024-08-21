@@ -2,7 +2,7 @@ create or alter proc dbo.StepsGet(@Recipeid int)
 as
 begin
 
-Select  rd.direction, rd.stepnumber 
+Select  rd.RecipeDirectionID, rd.direction, rd.stepnumber 
 from RecipeDirection rd
 join Recipe r 
 on rd.recipeid = r.recipeid

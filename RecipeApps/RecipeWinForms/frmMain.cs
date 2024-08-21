@@ -32,8 +32,6 @@ namespace RecipeWinForms
             mnuNewCookbook.Click += MnuNewCookbook_Click;
         }
 
-        
-
         public void OpenForm(Type frmtype, int pkvalue = 0)
         {
             bool b = WindowsFormUtility.IsFormOpen(frmtype);
@@ -106,10 +104,16 @@ namespace RecipeWinForms
                     newfrm.Show();
                     newfrm.MdiParent = this;
                     newfrm.WindowState = FormWindowState.Maximized;
+                    newfrm.TextChanged += Newfrm_TextChanged;
                     newfrm.FormClosed += Newfrm_FormClosed;
                 }
                 WindowsFormUtility.SetupNav(tsMain);
             }
+        }
+
+        private void Newfrm_TextChanged(object? sender, EventArgs e)
+        {
+            WindowsFormUtility.SetupNav(tsMain);
         }
 
         private void Newfrm_FormClosed(object? sender, FormClosedEventArgs e)

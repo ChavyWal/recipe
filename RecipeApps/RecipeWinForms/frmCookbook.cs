@@ -21,6 +21,7 @@ namespace RecipeWinForms
         public frmCookbook()
         {
             InitializeComponent();
+            btnDelete.Click += BtnDelete_Click;
         }
 
         public void LoadCookbookForm(int cookbookid)
@@ -36,7 +37,7 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(txtCookBookName, bindsource);
             WindowsFormUtility.SetControlBinding(txtCookBookprice, bindsource);
             WindowsFormUtility.SetControlBinding(lblCookBookdate, bindsource);
-            WindowsFormUtility.SetControlBinding(txtActive, bindsource);
+            WindowsFormUtility.SetControlBinding(ckbActive, bindsource);
             lstUser.DataSource = dtusers;
             lstUser.ValueMember = "usersid";
             lstUser.DisplayMember = "userName";
@@ -48,6 +49,22 @@ namespace RecipeWinForms
         {
             gCookbookRecipes.DataSource = DataMaintenance.CookbookRecipeGet(id);
             WindowsFormUtility.FormatGridForEdit(gCookbookRecipes, "Cookbook");
+            WindowsFormUtility.DeleteButtonToGrid(gCookbookRecipes, "Delete");
+            WindowsFormUtility.AddComboBoxToGrid(gCookbookRecipes, Recipe.SearchRecipe(), "Recipe", "RecipeName");
+            foreach (DataGridViewColumn col in gCookbookRecipes.Columns)
+            {
+                if (col.Name.StartsWith("RecipeName"))
+                {
+                    col.Visible = false;
+                }
+            }
         }
+
+        private void BtnDelete_Click(object? sender, EventArgs e)
+        {
+            DataMaintenance.CookbookDelete(id);
+        }
+
+        
     }
 }

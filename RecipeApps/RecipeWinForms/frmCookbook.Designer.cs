@@ -42,7 +42,7 @@
             txtCookBookprice = new TextBox();
             lblCookBookdate = new Label();
             lblDateCreatedCaption = new Label();
-            txtActive = new TextBox();
+            ckbActive = new CheckBox();
             tblCookBookrecipe = new TableLayoutPanel();
             btnCookbookRecipeSave = new Button();
             gCookbookRecipes = new DataGridView();
@@ -84,7 +84,7 @@
             tblCookBookInfo.Controls.Add(lstUser, 1, 2);
             tblCookBookInfo.Controls.Add(tblPrice, 1, 4);
             tblCookBookInfo.Controls.Add(lblDateCreatedCaption, 1, 3);
-            tblCookBookInfo.Controls.Add(txtActive, 1, 5);
+            tblCookBookInfo.Controls.Add(ckbActive, 1, 5);
             tblCookBookInfo.Dock = DockStyle.Fill;
             tblCookBookInfo.Location = new Point(3, 3);
             tblCookBookInfo.Name = "tblCookBookInfo";
@@ -95,7 +95,7 @@
             tblCookBookInfo.RowStyles.Add(new RowStyle());
             tblCookBookInfo.RowStyles.Add(new RowStyle());
             tblCookBookInfo.RowStyles.Add(new RowStyle());
-            tblCookBookInfo.Size = new Size(790, 260);
+            tblCookBookInfo.Size = new Size(790, 248);
             tblCookBookInfo.TabIndex = 0;
             // 
             // btnSave
@@ -156,7 +156,7 @@
             // 
             lblActiveCaption.Anchor = AnchorStyles.Left;
             lblActiveCaption.AutoSize = true;
-            lblActiveCaption.Location = new Point(3, 226);
+            lblActiveCaption.Location = new Point(3, 220);
             lblActiveCaption.Name = "lblActiveCaption";
             lblActiveCaption.Size = new Size(66, 28);
             lblActiveCaption.TabIndex = 5;
@@ -224,13 +224,16 @@
             lblDateCreatedCaption.TabIndex = 8;
             lblDateCreatedCaption.Text = "Date Created:";
             // 
-            // txtActive
+            // ckbActive
             // 
-            txtActive.Dock = DockStyle.Left;
-            txtActive.Location = new Point(170, 223);
-            txtActive.Name = "txtActive";
-            txtActive.Size = new Size(125, 34);
-            txtActive.TabIndex = 10;
+            ckbActive.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ckbActive.AutoSize = true;
+            ckbActive.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ckbActive.Location = new Point(170, 223);
+            ckbActive.Name = "ckbActive";
+            ckbActive.Size = new Size(617, 22);
+            ckbActive.TabIndex = 10;
+            ckbActive.UseVisualStyleBackColor = true;
             // 
             // tblCookBookrecipe
             // 
@@ -239,7 +242,7 @@
             tblCookBookrecipe.Controls.Add(btnCookbookRecipeSave, 0, 0);
             tblCookBookrecipe.Controls.Add(gCookbookRecipes, 0, 1);
             tblCookBookrecipe.Dock = DockStyle.Fill;
-            tblCookBookrecipe.Location = new Point(3, 269);
+            tblCookBookrecipe.Location = new Point(3, 257);
             tblCookBookrecipe.Name = "tblCookBookrecipe";
             tblCookBookrecipe.RowCount = 2;
             tblCookBookrecipe.RowStyles.Add(new RowStyle());
@@ -308,6 +311,6 @@
         private DataGridView gCookbookRecipes;
         private TextBox txtCookBookprice;
         private Label lblCookBookdate;
-        private TextBox txtActive;
+        private CheckBox ckbActive;
     }
 }

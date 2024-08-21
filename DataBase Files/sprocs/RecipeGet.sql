@@ -1,8 +1,8 @@
-create or alter procedure dbo.RecipeGet(@Recipeid int = 0, @All bit = 0, @Recipename varchar(30) = '')
+create or alter procedure dbo.RecipeGet(@Recipeid int = 0, @All bit = 0, @Recipename varchar(30) = '', @IncludeBlank bit = 0)
 as 
 begin
 	select @Recipename = nullif(@recipename, '')
-	select r.RecipeID,r.RecipeName, r.CurrentStatus,u.UsersID, c.CuisineTypeID, u.UserName ,r.Calories, NumIngredients = dbo.IngredientPerRecipe(r.recipeid), c.CuisineType, r.DateDraft, r.DatePublished, r.DateArchived,  r.RecipePicture 
+	select r.RecipeID ,r.RecipeName,ConcatCurrentStatus = concat('Current Status: ',r.CurrentStatus), r.CurrentStatus,u.UsersID, c.CuisineTypeID, u.UserName ,r.Calories, NumIngredients = dbo.IngredientPerRecipe(r.recipeid), c.CuisineType, r.DateDraft, r.DatePublished, r.DateArchived,  r.RecipePicture 
 	from recipe r
 	join users u 
 	on r.UsersID = u.UsersID
@@ -11,22 +11,24 @@ begin
 	where r.recipeid = @Recipeid
 	or @All = 1
 	or  r.RecipeName like  '%'+ @Recipename + '%'
-	order by r.RecipeName
+	union select  0,'', '','',0, 0, '' ,0,0, '', '', '', '',  '' 
+	where @includeBlank = 1
+	order by r.recipeid,r.RecipeName
 end
 go
 
-/*
-exec RecipeGet
 
-exec RecipeGet @Recipename = ''
+--exec RecipeGet
 
-exec RecipeGet @Recipename = 'cho'
+--exec RecipeGet @Recipename = ''
 
-exec RecipeGet @All = 1
+--exec RecipeGet @Recipename = 'cho'
 
-declare @Recipeid int
-select top 1 @Recipeid = r.RecipeID from recipe r
-exec RecipeGet @Recipeid = @Recipeid
-*/
+--exec RecipeGet @All = 1, @IncludeBlank = 1
+
+--declare @Recipeid int
+--select top 1 @Recipeid = r.RecipeID from recipe r
+--exec RecipeGet @Recipeid = @Recipeid
+
 
 

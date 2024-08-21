@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CPUWindowsFormFrameWork;
+using RecipeSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,22 @@ namespace RecipeWinForms
         public frmCloneRecipe()
         {
             InitializeComponent();
+            BindRecipeList();
+            btnClone.Click += BtnClone_Click;
+        }
+
+        private void BtnClone_Click(object? sender, EventArgs e)
+        {
+            int recipeid = WindowsFormUtility.GetIdFromComboBox(lstRecipeName);
+            Recipe.CloneRecipe(recipeid);
+        }
+
+        private void BindRecipeList()
+        {
+            DataTable dtRecipes = Recipe.SearchRecipe(true);
+            lstRecipeName.DataSource = dtRecipes;
+            lstRecipeName.ValueMember = "Recipeid";
+            lstRecipeName.DisplayMember = "RecipeName";
         }
     }
 }
