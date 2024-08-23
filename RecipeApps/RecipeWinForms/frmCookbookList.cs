@@ -18,9 +18,14 @@ namespace RecipeWinForms
         public frmCookbookList()
         {
             InitializeComponent();
+            
             BindData();
+            btnNewCookbook.Click += BtnNewCookbook_Click;
             gCookBookList.CellDoubleClick += GCookBookList_CellDoubleClick;
+            gCookBookList.KeyDown += GCookBookList_KeyDown;
         }
+
+        
 
         private void BindData()
         {
@@ -37,8 +42,8 @@ namespace RecipeWinForms
 
         private void ShowCookbook(int rowindex)
         {
-            int id = rowindex;
-            if (id > -1)
+            int id = 0;
+            if (rowindex > -1)
             {
                 id = WindowsFormUtility.GetidFromGrid(gCookBookList, rowindex, "CookBookid");
             }
@@ -48,9 +53,23 @@ namespace RecipeWinForms
             }
         }
 
+        private void GCookBookList_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && gCookBookList.SelectedRows.Count> 0)
+            {
+                ShowCookbook(gCookBookList.SelectedRows[0].Index);
+                e.SuppressKeyPress = true;
+            }
+        }
+
         private void GCookBookList_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
             ShowCookbook(e.RowIndex);
+        }
+
+        private void BtnNewCookbook_Click(object? sender, EventArgs e)
+        {
+            ShowCookbook(-1);
         }
     }
 }

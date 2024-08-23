@@ -19,6 +19,7 @@ namespace RecipeWinForms
             InitializeComponent();
             BindData();
             gRecipeList.CellDoubleClick += GRecipeList_CellDoubleClick;
+            gRecipeList.KeyDown += GRecipeList_KeyDown;
             btnNewRecipe.Click += BtnNewRecipe_Click;
             this.Activated += FrmRecipeList_Activated;
         }
@@ -52,6 +53,15 @@ namespace RecipeWinForms
             if (this.MdiParent != null && this.MdiParent is frmMain)
             {
                 ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipeForm), id);
+            }
+        }
+
+        private void GRecipeList_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && gRecipeList.SelectedRows.Count > 0)
+            {
+                ShowRecipeForm(gRecipeList.SelectedRows[0].Index);
+                e.SuppressKeyPress = true;
             }
         }
 

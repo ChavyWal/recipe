@@ -182,7 +182,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1190, 739);
+            ClientSize = new Size(1190, 649);
             Controls.Add(tsMain);
             Controls.Add(mnuMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);

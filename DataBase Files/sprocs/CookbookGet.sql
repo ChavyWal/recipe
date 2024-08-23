@@ -5,7 +5,7 @@ begin
 	from CookBook c
 	join users u 
 	on u.UsersID = c.UsersID
-	join CookBookRecipe cr
+	left join CookBookRecipe cr
 	on cr.CookBookID = c.CookBookID
 	where c.CookBookID = @Cookbookid
 	or @All = 1

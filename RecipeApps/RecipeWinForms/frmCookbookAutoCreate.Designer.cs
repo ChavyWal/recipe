@@ -58,7 +58,7 @@
             lstUsers.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lstUsers.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lstUsers.FormattingEnabled = true;
-            lstUsers.Location = new Point(3, 133);
+            lstUsers.Location = new Point(3, 129);
             lstUsers.Name = "lstUsers";
             lstUsers.Size = new Size(348, 36);
             lstUsers.TabIndex = 0;
@@ -83,7 +83,7 @@
             ClientSize = new Size(627, 296);
             Controls.Add(tblMain);
             Name = "frmCookbookAutoCreate";
-            Text = "frmCookbookAutoCreate";
+            Text = "CookbookAutoCreate";
             tblMain.ResumeLayout(false);
             tblMain.PerformLayout();
             ResumeLayout(false);

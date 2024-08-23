@@ -244,7 +244,7 @@
             ClientSize = new Size(683, 379);
             Controls.Add(tblMain);
             Name = "frmChangeStatus";
-            Text = "Cange Status";
+            Text = "Change Status";
             tblMain.ResumeLayout(false);
             tblMain.PerformLayout();
             tblDates.ResumeLayout(false);

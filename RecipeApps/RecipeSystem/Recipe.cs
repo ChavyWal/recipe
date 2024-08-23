@@ -72,11 +72,13 @@ namespace RecipeSystem
             SQLUtility.Setparamvalue(cmd, "@Recipeid", recipeid);
             return SQLUtility.GetDataTable(cmd);
         }
+
         public static DataTable GetMeasurments()
         {
             SqlCommand cmd = SQLUtility.GetSqlCommand("MeasurmentsGet");
             return SQLUtility.GetDataTable(cmd);
         }
+
         public static DataTable GetUserslist(bool includeblank = false)
         {
             DataTable dt = new();
@@ -100,6 +102,13 @@ namespace RecipeSystem
         {
             SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeIngredientDelete");
             SQLUtility.Setparamvalue(cmd, "@Recipeingredientid", recipeingredientid);
+            SQLUtility.ExecuteSQL(cmd);
+        }
+
+        public static void DeleteRecipeSteps(int recipestepsid)
+        {
+            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeStepsDelete");
+            SQLUtility.Setparamvalue(cmd, "@RecipeDirectionid", recipestepsid);
             SQLUtility.ExecuteSQL(cmd);
         }
 
@@ -127,8 +136,5 @@ namespace RecipeSystem
             SQLUtility.Setparamvalue(cmd, "@recipeid", id);
             SQLUtility.ExecuteSQL(cmd);
         }
-
-       
-
     }
 }

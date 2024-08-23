@@ -19,6 +19,17 @@ namespace RecipeSystem
             return SQLUtility.GetDataTable(cmd);
         }
 
+        public static void Save(DataTable dtcookbook)
+        {
+            if (dtcookbook.Rows.Count == 0)
+            {
+                throw new Exception("Cannot call Cookbook save method because there are no rows in table");
+            }
+            DataRow r = dtcookbook.Rows[0];
+            SQLUtility.SaveDateRow(r, "CookbookUpdate");
+        }
+        
+
         public static DataTable Load(int cookbookid)
         {
             SqlCommand cmd = SQLUtility.GetSqlCommand("CookbookGet");

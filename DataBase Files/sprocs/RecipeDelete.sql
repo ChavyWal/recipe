@@ -12,6 +12,7 @@ as
 			end
 		begin try
 		begin tran
+			delete CookBookRecipe where recipeid = @recipeid
 			delete recipedirection where recipeid = @recipeid
 			delete RecipeIngredient where recipeid = @recipeid
 			delete recipe where recipeid = @recipeid 

@@ -28,3 +28,5 @@ else
 	end
 end
 go
+
+select * from cookbook c

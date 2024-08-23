@@ -23,8 +23,17 @@ namespace RecipeWinForms
 
         private void BtnCreateCookbook_Click(object? sender, EventArgs e)
         {
+
             int usersid = WindowsFormUtility.GetIdFromComboBox(lstUsers);
-            DataMaintenance.AutoCreateCookbook(usersid);
+            try
+            {
+                DataMaintenance.AutoCreateCookbook(usersid);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+            
         }
 
         private void BindUsersList()
