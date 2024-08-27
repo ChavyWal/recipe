@@ -1,4 +1,4 @@
-Create or alter proc dbo.MeasurmentsGet
+Create or alter proc dbo.MeasurmentTypeGet(@All bit = 0)
 as
 begin
 	select m.MeasurmentTypeID, m.MeasurmentType

@@ -1,4 +1,4 @@
-create or alter proc dbo.MeasurmentsUpdate(
+create or alter proc dbo.MeasurmentTypeUpdate(
 @MeasurmentTypeID int ,
 @MeasurmentType varchar(25))
 as

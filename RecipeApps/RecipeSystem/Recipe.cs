@@ -54,14 +54,14 @@ namespace RecipeSystem
 
         public static DataTable GetIngredientTable(int recipeid)
         {
-            SqlCommand cmd = SQLUtility.GetSqlCommand("IngredientGet");
+            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeIngredientGet");
             SQLUtility.Setparamvalue(cmd, "@Recipeid", recipeid);
             return SQLUtility.GetDataTable(cmd);
         }
 
         public static DataTable GetIngredients()
         {
-            SqlCommand cmd = SQLUtility.GetSqlCommand("IngredientGet");
+            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeIngredientGet");
             SQLUtility.Setparamvalue(cmd, "@All", 1);
             return SQLUtility.GetDataTable(cmd);
         }
@@ -70,12 +70,6 @@ namespace RecipeSystem
         {
             SqlCommand cmd = SQLUtility.GetSqlCommand("StepsGet");
             SQLUtility.Setparamvalue(cmd, "@Recipeid", recipeid);
-            return SQLUtility.GetDataTable(cmd);
-        }
-
-        public static DataTable GetMeasurments()
-        {
-            SqlCommand cmd = SQLUtility.GetSqlCommand("MeasurmentsGet");
             return SQLUtility.GetDataTable(cmd);
         }
 
@@ -105,11 +99,29 @@ namespace RecipeSystem
             SQLUtility.ExecuteSQL(cmd);
         }
 
+        public static void RecipeIngredientSave(DataTable dt,int recipeid)
+        {
+            foreach(DataRow dr in dt.Select("","", DataViewRowState.Added))
+            {
+                dr["Recipeid"] = recipeid;
+            }
+            SQLUtility.SaveDataTable(dt, "RecipeIngredientUpdate");
+        }
+
         public static void DeleteRecipeSteps(int recipestepsid)
         {
             SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeStepsDelete");
             SQLUtility.Setparamvalue(cmd, "@RecipeDirectionid", recipestepsid);
             SQLUtility.ExecuteSQL(cmd);
+        }
+
+        public static void RecipeStepsSave(DataTable dt, int recipeid)
+        {
+            foreach (DataRow dr in dt.Select("", "", DataViewRowState.Added))
+            {
+                dr["Recipeid"] = recipeid;
+            }
+            SQLUtility.SaveDataTable(dt, "RecipeStepsUpdate");
         }
 
         public static void CloneRecipe(int recipeid)

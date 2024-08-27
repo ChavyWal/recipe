@@ -1,4 +1,4 @@
-create or alter proc dbo.DeleteUsersandRecords(@usersid int)
+create or alter proc dbo.UsersDelete(@usersid int)
 as
 begin
 	begin try
@@ -105,7 +105,7 @@ go
 
 --declare @usersid int
 --select top 1 @usersid = u.usersid from users u
---exec DeleteUsersandRecords @usersid = @usersid
+--exec UsersDelete @usersid = @usersid
 
 
 --select u.UserName, r.RecipeName, c.CookBookName, m.MealName from users u 

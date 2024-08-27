@@ -1,10 +1,11 @@
 create or alter proc dbo.UsersUpdate(
-@usersid int,
+@usersid int output,
 @Firstname varchar(20),
 @LastName varchar(25),
 @username varchar(25))
 as
 begin
+declare @return int = 0
 	select @Usersid = isnull(@usersid, 0)
 
 	if @usersid = 0
@@ -23,5 +24,8 @@ begin
 		username = @username
 		where usersid = @usersid
 	end
+
+	return @return
 end
 go
+

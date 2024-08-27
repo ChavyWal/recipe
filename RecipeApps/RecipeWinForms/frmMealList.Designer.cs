@@ -36,6 +36,7 @@
             // 
             // tblMain
             // 
+            tblMain.BackColor = Color.MistyRose;
             tblMain.ColumnCount = 1;
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblMain.Controls.Add(gMeal, 0, 0);
@@ -49,6 +50,8 @@
             // 
             // gMeal
             // 
+            gMeal.BackgroundColor = Color.MistyRose;
+            gMeal.BorderStyle = BorderStyle.None;
             gMeal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gMeal.Dock = DockStyle.Fill;
             gMeal.Location = new Point(19, 23);

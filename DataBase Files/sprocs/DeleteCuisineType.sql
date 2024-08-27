@@ -1,4 +1,4 @@
-create or alter proc dbo.DeleteCuisineType(@CuisineTypeid int)
+create or alter proc dbo.CuisineTypeDelete(@CuisineTypeid int)
 as
 begin
 	begin try

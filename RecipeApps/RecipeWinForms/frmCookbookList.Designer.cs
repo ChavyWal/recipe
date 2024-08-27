@@ -37,6 +37,7 @@
             // 
             // tblMain
             // 
+            tblMain.BackColor = Color.FromArgb(255, 255, 192);
             tblMain.ColumnCount = 1;
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblMain.Controls.Add(gCookBookList, 0, 1);
@@ -52,26 +53,30 @@
             // 
             // gCookBookList
             // 
+            gCookBookList.BackgroundColor = Color.FromArgb(255, 255, 192);
+            gCookBookList.BorderStyle = BorderStyle.None;
             gCookBookList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gCookBookList.Dock = DockStyle.Fill;
-            gCookBookList.Location = new Point(10, 71);
+            gCookBookList.Location = new Point(10, 73);
             gCookBookList.Margin = new Padding(10);
             gCookBookList.Name = "gCookBookList";
             gCookBookList.RowHeadersWidth = 51;
-            gCookBookList.Size = new Size(780, 369);
+            gCookBookList.Size = new Size(780, 367);
             gCookBookList.TabIndex = 1;
             // 
             // btnNewCookbook
             // 
             btnNewCookbook.AutoSize = true;
+            btnNewCookbook.BackColor = Color.FromArgb(255, 255, 128);
+            btnNewCookbook.FlatStyle = FlatStyle.Flat;
             btnNewCookbook.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnNewCookbook.Location = new Point(10, 10);
             btnNewCookbook.Margin = new Padding(10);
             btnNewCookbook.Name = "btnNewCookbook";
-            btnNewCookbook.Size = new Size(178, 41);
+            btnNewCookbook.Size = new Size(180, 43);
             btnNewCookbook.TabIndex = 2;
             btnNewCookbook.Text = "New Cookbook";
-            btnNewCookbook.UseVisualStyleBackColor = true;
+            btnNewCookbook.UseVisualStyleBackColor = false;
             // 
             // frmCookbookList
             // 

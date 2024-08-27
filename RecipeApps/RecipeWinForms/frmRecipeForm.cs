@@ -18,6 +18,8 @@ namespace RecipeWinForms
     {
         int id = 0;
         DataTable dtrecipe = new();
+        DataTable dtRecipeingredients = new();
+        DataTable dtRecipeSteps = new();
         BindingSource bindsource = new();
 
         public frmRecipeForm()
@@ -26,21 +28,24 @@ namespace RecipeWinForms
             btnSave.Click += BtnSave_Click;
             btnDelete.Click += BtnDelete_Click;
             btnChangeStatus.Click += BtnChangeStatus_Click;
+            btnSaveIngredients.Click += BtnSaveIngredients_Click;
+            btnSaveSteps.Click += BtnSaveSteps_Click;
             gIngredients.CellContentClick += GIngredients_CellContentClick;
             gSteps.CellContentClick += GSteps_CellContentClick;
             this.Activated += FrmRecipeForm_Activated;
+            this.FormClosing += FrmRecipeForm_FormClosing; ;
         }
 
-      
+
 
         private void FrmRecipeForm_Activated(object? sender, EventArgs e)
-         {
-             if (id > 0)
-             {
-                 dtrecipe = Recipe.Load(id);
-                 bindsource.DataSource = dtrecipe;
-             }
-         }
+        {
+            if (id > 0)
+            {
+                dtrecipe = Recipe.Load(id);
+                bindsource.DataSource = dtrecipe;
+            }
+        }
 
         public void LoadRecipeForm(int recipeid)
         {
@@ -83,23 +88,24 @@ namespace RecipeWinForms
 
         private void BindData()
         {
-            WindowsFormUtility.FormatGridForEdit(gIngredients, "ingredient");
-            gIngredients.DataSource = Recipe.GetIngredientTable(id);
+            dtRecipeingredients = Recipe.GetIngredientTable(id);
+            gIngredients.Columns.Clear();
+            gIngredients.DataSource = dtRecipeingredients;
             WindowsFormUtility.AddComboBoxToGrid(gIngredients, Recipe.GetIngredients(), "Ingredient", "ingredientname");
-            WindowsFormUtility.AddComboBoxToGrid(gIngredients, Recipe.GetIngredients(), "Ingredient", "MeasurmentType");
-            foreach (DataGridViewColumn col in gIngredients.Columns)
-            {
-                if (col.Name.StartsWith("ingredientname")  || col.Name.StartsWith("MeasurmentType"))
-                {
-                    col.Visible = false;
-                }
-            }
+            WindowsFormUtility.AddComboBoxToGrid(gIngredients, DataMaintenance.MeasurmentsGet(), "MeasurmentType", "MeasurmentType");
+            WindowsFormUtility.HideColumn(gIngredients, "ingredientname");
+            WindowsFormUtility.HideColumn(gIngredients, "MeasurmentType");
+            WindowsFormUtility.FormatGridForEdit(gIngredients, "Ingredient");
+            WindowsFormUtility.FormatGridForEdit(gIngredients, "Recipe");
+            WindowsFormUtility.FormatGridForEdit(gIngredients, "RecipeIngredient");
             WindowsFormUtility.DeleteButtonToGrid(gIngredients, "Delete");
+            dtRecipeSteps = Recipe.GetStepsTable(id);
+            gSteps.Columns.Clear();
+            gSteps.DataSource = dtRecipeSteps;
             WindowsFormUtility.FormatGridForEdit(gSteps, "RecipeDirection");
-            gSteps.DataSource = Recipe.GetStepsTable(id);
+            WindowsFormUtility.FormatGridForEdit(gSteps, "Recipe");
             WindowsFormUtility.DeleteButtonToGrid(gSteps, "Delete");
         }
-
 
         private string GetRecipeDesc()
         {
@@ -112,12 +118,14 @@ namespace RecipeWinForms
             return value;
         }
 
-        private void Save()
+        private bool Save()
         {
+            bool b = false;
             try
             {
                 Recipe.save(dtrecipe);
                 bindsource.ResetBindings(false);
+                b = true;
                 id = SQLUtility.GetvalueFromFirstRowAsInt(dtrecipe, "Recipeid");
                 this.Tag = id;
                 this.Text = GetRecipeDesc();
@@ -127,7 +135,7 @@ namespace RecipeWinForms
             {
                 MessageBox.Show(ex.Message, "Record Keeper");
             }
-            
+            return b;
         }
 
         private void Delete()
@@ -159,12 +167,12 @@ namespace RecipeWinForms
         private void DeleteRecipIngredient(int rowindex)
         {
             int recipeingredientid = WindowsFormUtility.GetidFromGrid(gIngredients, rowindex, "RecipeIngredientId");
-            if(recipeingredientid > 0)
+            if (recipeingredientid > 0)
             {
                 try
                 {
                     Recipe.DeleteRecipeIngredient(recipeingredientid);
-                    gIngredients.DataSource = Recipe.GetIngredientTable(id);
+                    BindData();
                 }
                 catch (Exception ex)
                 {
@@ -187,6 +195,56 @@ namespace RecipeWinForms
                 {
                     MessageBox.Show(ex.Message, Application.ProductName);
                 }
+            }
+        }
+
+        private void FrmRecipeForm_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            bindsource.EndEdit();
+            if (SQLUtility.TableHasChanges(dtrecipe))
+            {
+                var res = MessageBox.Show($"Do you want to save changes to {this.Text} before closing?", Application.ProductName, MessageBoxButtons.YesNoCancel);
+                switch (res)
+                {
+                    case DialogResult.Yes:
+                        bool b = Save();
+                        if (b == false)
+                        {
+                            e.Cancel = true;
+                            this.Activate();
+                        }
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        this.Activate();
+                        break;
+                }
+            }
+        }
+
+        private void BtnSaveIngredients_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                Recipe.RecipeIngredientSave(dtRecipeingredients, id);
+                BindData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+        }
+
+        private void BtnSaveSteps_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                Recipe.RecipeStepsSave(dtRecipeSteps, id);
+                BindData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
             }
         }
 

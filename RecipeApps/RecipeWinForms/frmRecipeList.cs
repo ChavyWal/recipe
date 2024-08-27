@@ -33,14 +33,14 @@ namespace RecipeWinForms
         {
             WindowsFormUtility.FormatGridforsearchresults(gRecipeList, "Recipe");
             gRecipeList.DataSource = Recipe.SearchRecipe();
-            foreach (DataGridViewColumn col in gRecipeList.Columns)
-            {
-                if (col.Name.StartsWith("UsersID") || col.Name.StartsWith("CuisineTypeID") || col.Name.StartsWith("CuisineType") || col.Name.StartsWith("DateDraft") || col.Name.StartsWith("DatePublished") || col.Name.StartsWith("DateArchived") || col.Name.StartsWith("RecipePicture") || col.Name.StartsWith("ConcatCurrentStatus"))
-                {
-                    col.Visible = false;
-                }
-            }
-
+            WindowsFormUtility.HideColumn(gRecipeList, "UsersID");
+            WindowsFormUtility.HideColumn(gRecipeList, "CuisineTypeID");
+            WindowsFormUtility.HideColumn(gRecipeList, "CuisineType");
+            WindowsFormUtility.HideColumn(gRecipeList, "DateDraft");
+            WindowsFormUtility.HideColumn(gRecipeList, "ConcatCurrentStatus");
+            WindowsFormUtility.HideColumn(gRecipeList, "RecipePicture");
+            WindowsFormUtility.HideColumn(gRecipeList, "DateArchived");
+            WindowsFormUtility.HideColumn(gRecipeList, "DatePublished");
         }
 
         private void ShowRecipeForm(int rowindex)

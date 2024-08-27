@@ -10,7 +10,7 @@ begin
 			from recipe r
 			)
 			insert CookBook (CookBookprice, CookBookName, UsersID, Active, CookBookDate)
-			select  x.NumofRecipes * 1.33, concat('Recipes by ', u.FirstName, ' ', u.LastName), u.UsersID, 1, '2024-03-13'
+			select  x.NumofRecipes * 1.33, concat('Recipes by ', u.FirstName, ' ', u.LastName), u.UsersID, 1, getutcdate() at time zone 'UTC' at time zone 'Eastern Standard Time'
 			from users u 
 			cross join x 
 			where u.UsersID = @usersid

@@ -1,27 +1,23 @@
-create or alter proc dbo.CookbookRecipeDelete(@Cookbookid int, @recipeid int)
+create or alter proc dbo.CookbookRecipeDelete(@Cookbookrecipeid int)
 As
 begin
 	delete cr
 	from CookBookRecipe cr
-	where cr.CookBookID = @Cookbookid 
-	and cr.RecipeID = @recipeid
+	where cr.CookBookrecipeid = @Cookbookrecipeid
 	
 end
 go
 
 --Testing
 /*
-declare @cookbookid int
-declare @recipeid int
-select @cookbookid = cr.CookBookID, @recipeid = cr.RecipeID from CookBookRecipe cr
+declare @cookbookrecipeid int
+select @cookbookrecipeid = cr.CookBookRecipeID from CookBookRecipe cr
 
 select * from CookBookRecipe cr
-	where cr.CookBookID = @Cookbookid 
-	and cr.RecipeID = @recipeid
+	where cr.CookBookRecipeID = @CookbookRecipeid
 
-exec CookbookRecipeDelete @Cookbookid  = @cookbookid, @recipeid = @recipeid
+exec CookbookRecipeDelete @Cookbookrecipeid = @CookbookRecipeid
 
 select * from CookBookRecipe cr
-	where cr.CookBookID = @Cookbookid 
-	and cr.RecipeID = @recipeid
+	where cr.CookBookRecipeID = @CookbookRecipeid
 	*/

@@ -1,4 +1,5 @@
-﻿using RecipeSystem;
+﻿using CPUWindowsFormFrameWork;
+using RecipeSystem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ namespace RecipeWinForms
 
         private void BindData()
         {
+            WindowsFormUtility.FormatGridforsearchresults(gMeal, "Meal");
             gMeal.DataSource = Recipe.MealGet();
         }
     }

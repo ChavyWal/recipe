@@ -37,6 +37,7 @@
             // 
             // tblMain
             // 
+            tblMain.BackColor = Color.MintCream;
             tblMain.ColumnCount = 1;
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblMain.Controls.Add(btnNewRecipe, 0, 0);
@@ -53,24 +54,28 @@
             // btnNewRecipe
             // 
             btnNewRecipe.AutoSize = true;
+            btnNewRecipe.BackColor = Color.MediumSpringGreen;
+            btnNewRecipe.FlatStyle = FlatStyle.Flat;
             btnNewRecipe.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnNewRecipe.Location = new Point(10, 10);
             btnNewRecipe.Margin = new Padding(10);
             btnNewRecipe.Name = "btnNewRecipe";
-            btnNewRecipe.Size = new Size(144, 41);
+            btnNewRecipe.Size = new Size(146, 43);
             btnNewRecipe.TabIndex = 0;
             btnNewRecipe.Text = "New Recipe";
-            btnNewRecipe.UseVisualStyleBackColor = true;
+            btnNewRecipe.UseVisualStyleBackColor = false;
             // 
             // gRecipeList
             // 
+            gRecipeList.BackgroundColor = Color.MintCream;
+            gRecipeList.BorderStyle = BorderStyle.None;
             gRecipeList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gRecipeList.Dock = DockStyle.Fill;
-            gRecipeList.Location = new Point(10, 71);
+            gRecipeList.Location = new Point(10, 73);
             gRecipeList.Margin = new Padding(10);
             gRecipeList.Name = "gRecipeList";
             gRecipeList.RowHeadersWidth = 51;
-            gRecipeList.Size = new Size(780, 369);
+            gRecipeList.Size = new Size(780, 367);
             gRecipeList.TabIndex = 1;
             // 
             // frmRecipeList

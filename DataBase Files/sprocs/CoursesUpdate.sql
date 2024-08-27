@@ -1,4 +1,4 @@
-create or alter proc dbo.CoursesUpdate(
+create or alter proc dbo.CourseUpdate(
 @Courseid int,
 @Coursetype varchar(25),
 @Coursesequence int)

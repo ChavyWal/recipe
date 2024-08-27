@@ -23,21 +23,21 @@ namespace RecipeWinForms
             btnNewCookbook.Click += BtnNewCookbook_Click;
             gCookBookList.CellDoubleClick += GCookBookList_CellDoubleClick;
             gCookBookList.KeyDown += GCookBookList_KeyDown;
+            this.Activated += FrmCookbookList_Activated;
         }
 
-        
+        private void FrmCookbookList_Activated(object? sender, EventArgs e)
+        {
+            BindData();
+        }
 
         private void BindData()
         {
             WindowsFormUtility.FormatGridforsearchresults(gCookBookList, "CookBook");
             gCookBookList.DataSource = DataMaintenance.CookbookGet();
-            foreach (DataGridViewColumn col in gCookBookList.Columns)
-            {
-                if (col.Name.StartsWith("CookBookDate") || col.Name.StartsWith("Active"))
-                {
-                    col.Visible = false;
-                }
-            }
+            WindowsFormUtility.HideColumn(gCookBookList, "CookBookDate");
+            WindowsFormUtility.HideColumn(gCookBookList, "usersid");
+            WindowsFormUtility.HideColumn(gCookBookList, "Active");
         }
 
         private void ShowCookbook(int rowindex)

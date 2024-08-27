@@ -1,4 +1,4 @@
-create or alter proc dbo.CoursesDelete(@Courseid int)
+create or alter proc dbo.CourseDelete(@Courseid int)
 as
 begin
 		begin try

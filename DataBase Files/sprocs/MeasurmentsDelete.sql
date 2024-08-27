@@ -1,4 +1,4 @@
-create or alter proc dbo.MeasurmentsDelete(@MeasurmentTypeid int)
+create or alter proc dbo.MeasurmentTypeDelete(@MeasurmentTypeid int)
 as
 begin
 	begin try
