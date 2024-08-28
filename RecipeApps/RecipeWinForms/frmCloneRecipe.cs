@@ -24,7 +24,19 @@ namespace RecipeWinForms
         private void BtnClone_Click(object? sender, EventArgs e)
         {
             int recipeid = WindowsFormUtility.GetIdFromComboBox(lstRecipeName);
-            Recipe.CloneRecipe(recipeid);
+            try
+            {
+                int id = Recipe.CloneRecipe(recipeid);
+                if (this.MdiParent != null && this.MdiParent is frmMain)
+                {
+                    ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipeForm), id);
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BindRecipeList()

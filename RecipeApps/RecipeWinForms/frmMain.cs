@@ -101,11 +101,11 @@ namespace RecipeWinForms
                 }
                 if (newfrm != null)
                 {
+                    newfrm.FormClosed += Newfrm_FormClosed;
                     newfrm.Show();
                     newfrm.MdiParent = this;
                     newfrm.WindowState = FormWindowState.Maximized;
                     newfrm.TextChanged += Newfrm_TextChanged;
-                    newfrm.FormClosed += Newfrm_FormClosed;
                 }
                 WindowsFormUtility.SetupNav(tsMain);
             }

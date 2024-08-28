@@ -61,13 +61,8 @@ namespace RecipeSystem
 
         public static DataTable MeasurmentsGet()
         {
-            SqlCommand cmd = SQLUtility.GetSqlCommand("MeasurmentsGet");
-            return SQLUtility.GetDataTable(cmd);
-        }
-
-        public static DataTable CoursesGet()
-        {
-            SqlCommand cmd = SQLUtility.GetSqlCommand("CoursesGet");
+            SqlCommand cmd = SQLUtility.GetSqlCommand("MeasurmentTypeGet");
+            SQLUtility.Setparamvalue(cmd, "@includeBlank", 1);
             return SQLUtility.GetDataTable(cmd);
         }
 

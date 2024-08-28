@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             tblMain = new TableLayoutPanel();
             gMeal = new DataGridView();
             tblMain.SuspendLayout();
@@ -36,7 +37,7 @@
             // 
             // tblMain
             // 
-            tblMain.BackColor = Color.MistyRose;
+            tblMain.BackColor = Color.WhiteSmoke;
             tblMain.ColumnCount = 1;
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblMain.Controls.Add(gMeal, 0, 0);
@@ -50,9 +51,17 @@
             // 
             // gMeal
             // 
-            gMeal.BackgroundColor = Color.MistyRose;
+            gMeal.BackgroundColor = Color.WhiteSmoke;
             gMeal.BorderStyle = BorderStyle.None;
             gMeal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            gMeal.DefaultCellStyle = dataGridViewCellStyle1;
             gMeal.Dock = DockStyle.Fill;
             gMeal.Location = new Point(19, 23);
             gMeal.Margin = new Padding(19, 23, 19, 23);

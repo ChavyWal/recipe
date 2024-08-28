@@ -1,7 +1,6 @@
-create or alter proc dbo.CloneRecipe(@RecipeId int)
+create or alter proc dbo.CloneRecipe(@RecipeId int, @Newrecipeid int = 0 output)
 as
 begin
-declare @Newrecipeid int
 begin try
 	begin tran
 		insert Recipe (RecipeName, Calories, CuisineTypeID, DateArchived, DateDraft, DatePublished, UsersID)
@@ -49,7 +48,7 @@ end catch
 end
 go
 
---exec CloneRecipe @Recipeid = 255
+--exec CloneRecipe @Recipeid = 441
 --select * from recipe r join RecipeDirection rd on r.RecipeID = rd.RecipeID
 
 

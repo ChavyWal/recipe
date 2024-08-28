@@ -33,13 +33,12 @@ namespace RecipeWinForms
             gIngredients.CellContentClick += GIngredients_CellContentClick;
             gSteps.CellContentClick += GSteps_CellContentClick;
             this.Activated += FrmRecipeForm_Activated;
-            this.FormClosing += FrmRecipeForm_FormClosing; ;
+            this.FormClosing += FrmRecipeForm_FormClosing;
         }
-
-
 
         private void FrmRecipeForm_Activated(object? sender, EventArgs e)
         {
+            BindData();
             if (id > 0)
             {
                 dtrecipe = Recipe.Load(id);
@@ -73,17 +72,6 @@ namespace RecipeWinForms
             lstUser.DataBindings.Add("SelectedValue", dtrecipe, lstUser.ValueMember, false, DataSourceUpdateMode.OnPropertyChanged);
             this.Text = GetRecipeDesc();
             enableDisable();
-            BindData();
-        }
-
-        private void enableDisable()
-        {
-            btnChangeStatus.Enabled = id > 0 ? true : false;
-            btnSaveIngredients.Enabled = id > 0 ? true : false;
-            btnSaveSteps.Enabled = id > 0 ? true : false;
-            gIngredients.Enabled = id > 0 ? true : false;
-            gSteps.Enabled = id > 0 ? true : false;
-            btnDelete.Enabled = id > 0 ? true : false;
         }
 
         private void BindData()
@@ -107,6 +95,15 @@ namespace RecipeWinForms
             WindowsFormUtility.DeleteButtonToGrid(gSteps, "Delete");
         }
 
+        private void enableDisable()
+        {
+            btnChangeStatus.Enabled = id > 0 ? true : false;
+            btnSaveIngredients.Enabled = id > 0 ? true : false;
+            btnSaveSteps.Enabled = id > 0 ? true : false;
+            gIngredients.Enabled = id > 0 ? true : false;
+            gSteps.Enabled = id > 0 ? true : false;
+            btnDelete.Enabled = id > 0 ? true : false;
+        }
         private string GetRecipeDesc()
         {
             string value = "New Recipe";

@@ -188,8 +188,8 @@
             gDashboard.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             gDashboard.ShowCellToolTips = false;
             gDashboard.Size = new Size(475, 172);
-            gDashboard.StandardTab = true;
             gDashboard.TabIndex = 10;
+            gDashboard.TabStop = false;
             // 
             // frmDashBoard
             // 

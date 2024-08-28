@@ -32,7 +32,6 @@ namespace RecipeWinForms
                     ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbookList));
                     this.Close();
                 }
-
             }
             catch (Exception ex)
             {
