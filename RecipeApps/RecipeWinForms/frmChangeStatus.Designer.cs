@@ -64,7 +64,7 @@
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tblMain.Size = new Size(683, 379);
+            tblMain.Size = new Size(760, 379);
             tblMain.TabIndex = 0;
             // 
             // lblRecipeName
@@ -74,7 +74,7 @@
             lblRecipeName.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblRecipeName.Location = new Point(3, 28);
             lblRecipeName.Name = "lblRecipeName";
-            lblRecipeName.Size = new Size(677, 38);
+            lblRecipeName.Size = new Size(754, 38);
             lblRecipeName.TabIndex = 0;
             lblRecipeName.TextAlign = ContentAlignment.TopCenter;
             // 
@@ -85,7 +85,7 @@
             lblConcatCurrentStatus.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblConcatCurrentStatus.Location = new Point(3, 125);
             lblConcatCurrentStatus.Name = "lblConcatCurrentStatus";
-            lblConcatCurrentStatus.Size = new Size(677, 31);
+            lblConcatCurrentStatus.Size = new Size(754, 31);
             lblConcatCurrentStatus.TabIndex = 1;
             lblConcatCurrentStatus.Text = "Current Status:";
             lblConcatCurrentStatus.TextAlign = ContentAlignment.TopCenter;
@@ -110,7 +110,7 @@
             tblDates.RowCount = 2;
             tblDates.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tblDates.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblDates.Size = new Size(677, 88);
+            tblDates.Size = new Size(754, 88);
             tblDates.TabIndex = 2;
             // 
             // lblStatusDates
@@ -119,7 +119,7 @@
             lblStatusDates.Dock = DockStyle.Fill;
             lblStatusDates.Location = new Point(3, 44);
             lblStatusDates.Name = "lblStatusDates";
-            lblStatusDates.Size = new Size(163, 44);
+            lblStatusDates.Size = new Size(182, 44);
             lblStatusDates.TabIndex = 0;
             lblStatusDates.Text = "Status Dates";
             lblStatusDates.TextAlign = ContentAlignment.TopCenter;
@@ -128,9 +128,9 @@
             // 
             lblDraftedCaption.AutoSize = true;
             lblDraftedCaption.Dock = DockStyle.Fill;
-            lblDraftedCaption.Location = new Point(172, 0);
+            lblDraftedCaption.Location = new Point(191, 0);
             lblDraftedCaption.Name = "lblDraftedCaption";
-            lblDraftedCaption.Size = new Size(163, 44);
+            lblDraftedCaption.Size = new Size(182, 44);
             lblDraftedCaption.TabIndex = 1;
             lblDraftedCaption.Text = "Drafted";
             lblDraftedCaption.TextAlign = ContentAlignment.TopCenter;
@@ -139,9 +139,9 @@
             // 
             lblPublishedCaption.AutoSize = true;
             lblPublishedCaption.Dock = DockStyle.Fill;
-            lblPublishedCaption.Location = new Point(341, 0);
+            lblPublishedCaption.Location = new Point(379, 0);
             lblPublishedCaption.Name = "lblPublishedCaption";
-            lblPublishedCaption.Size = new Size(163, 44);
+            lblPublishedCaption.Size = new Size(182, 44);
             lblPublishedCaption.TabIndex = 2;
             lblPublishedCaption.Text = "Published";
             lblPublishedCaption.TextAlign = ContentAlignment.TopCenter;
@@ -150,9 +150,9 @@
             // 
             lblArchivedCaption.AutoSize = true;
             lblArchivedCaption.Dock = DockStyle.Fill;
-            lblArchivedCaption.Location = new Point(510, 0);
+            lblArchivedCaption.Location = new Point(567, 0);
             lblArchivedCaption.Name = "lblArchivedCaption";
-            lblArchivedCaption.Size = new Size(164, 44);
+            lblArchivedCaption.Size = new Size(184, 44);
             lblArchivedCaption.TabIndex = 3;
             lblArchivedCaption.Text = "Archived";
             lblArchivedCaption.TextAlign = ContentAlignment.TopCenter;
@@ -162,9 +162,9 @@
             lblDateDraft.AutoSize = true;
             lblDateDraft.BackColor = SystemColors.ControlDark;
             lblDateDraft.Dock = DockStyle.Fill;
-            lblDateDraft.Location = new Point(172, 44);
+            lblDateDraft.Location = new Point(191, 44);
             lblDateDraft.Name = "lblDateDraft";
-            lblDateDraft.Size = new Size(163, 44);
+            lblDateDraft.Size = new Size(182, 44);
             lblDateDraft.TabIndex = 4;
             // 
             // lblDatePublished
@@ -172,9 +172,9 @@
             lblDatePublished.AutoSize = true;
             lblDatePublished.BackColor = SystemColors.ControlDark;
             lblDatePublished.Dock = DockStyle.Fill;
-            lblDatePublished.Location = new Point(341, 44);
+            lblDatePublished.Location = new Point(379, 44);
             lblDatePublished.Name = "lblDatePublished";
-            lblDatePublished.Size = new Size(163, 44);
+            lblDatePublished.Size = new Size(182, 44);
             lblDatePublished.TabIndex = 5;
             // 
             // lblDateArchived
@@ -182,9 +182,9 @@
             lblDateArchived.AutoSize = true;
             lblDateArchived.BackColor = SystemColors.ControlDark;
             lblDateArchived.Dock = DockStyle.Fill;
-            lblDateArchived.Location = new Point(510, 44);
+            lblDateArchived.Location = new Point(567, 44);
             lblDateArchived.Name = "lblDateArchived";
-            lblDateArchived.Size = new Size(164, 44);
+            lblDateArchived.Size = new Size(184, 44);
             lblDateArchived.TabIndex = 6;
             // 
             // tblStatusButtons
@@ -201,16 +201,16 @@
             tblStatusButtons.Name = "tblStatusButtons";
             tblStatusButtons.RowCount = 1;
             tblStatusButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblStatusButtons.Size = new Size(677, 91);
+            tblStatusButtons.Size = new Size(754, 91);
             tblStatusButtons.TabIndex = 3;
             // 
             // btnDraft
             // 
             btnDraft.Dock = DockStyle.Fill;
-            btnDraft.Location = new Point(9, 9);
-            btnDraft.Margin = new Padding(9);
+            btnDraft.Location = new Point(20, 20);
+            btnDraft.Margin = new Padding(20);
             btnDraft.Name = "btnDraft";
-            btnDraft.Size = new Size(207, 73);
+            btnDraft.Size = new Size(211, 51);
             btnDraft.TabIndex = 0;
             btnDraft.Text = "Draft";
             btnDraft.UseVisualStyleBackColor = true;
@@ -218,10 +218,10 @@
             // btnPublished
             // 
             btnPublished.Dock = DockStyle.Fill;
-            btnPublished.Location = new Point(234, 9);
-            btnPublished.Margin = new Padding(9);
+            btnPublished.Location = new Point(271, 20);
+            btnPublished.Margin = new Padding(20);
             btnPublished.Name = "btnPublished";
-            btnPublished.Size = new Size(207, 73);
+            btnPublished.Size = new Size(211, 51);
             btnPublished.TabIndex = 1;
             btnPublished.Text = "Published";
             btnPublished.UseVisualStyleBackColor = true;
@@ -229,10 +229,10 @@
             // btnArchived
             // 
             btnArchived.Dock = DockStyle.Fill;
-            btnArchived.Location = new Point(459, 9);
-            btnArchived.Margin = new Padding(9);
+            btnArchived.Location = new Point(522, 20);
+            btnArchived.Margin = new Padding(20);
             btnArchived.Name = "btnArchived";
-            btnArchived.Size = new Size(209, 73);
+            btnArchived.Size = new Size(212, 51);
             btnArchived.TabIndex = 2;
             btnArchived.Text = "Archived";
             btnArchived.UseVisualStyleBackColor = true;
@@ -241,7 +241,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(683, 379);
+            ClientSize = new Size(760, 379);
             Controls.Add(tblMain);
             Name = "frmChangeStatus";
             Text = "Change Status";

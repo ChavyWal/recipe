@@ -21,10 +21,15 @@ namespace RecipeWinForms
             btnSave.Click += BtnSave_Click;
             btnCookbookRecipeSave.Click += BtnCookbookRecipeSave_Click;
             gCookbookRecipes.CellContentClick += GCookbookRecipes_CellContentClick;
+            gCookbookRecipes.DataError += GCookbookRecipes_DataError;
+            this.Activated += FrmCookbook_Activated;
             this.FormClosing += FrmCookbook_FormClosing;
         }
 
-        
+        private void FrmCookbook_Activated(object? sender, EventArgs e)
+        {
+            BindData();
+        }
 
         public void LoadCookbookForm(int cookbookid)
         {
@@ -47,7 +52,7 @@ namespace RecipeWinForms
             lstUser.DataBindings.Add("SelectedValue", dtcookbook, lstUser.ValueMember, false, DataSourceUpdateMode.OnPropertyChanged);
             this.Text = GetCookbookDesc();
             EnableDisable();
-            BindData();
+            
         }
 
         private void BindData()
@@ -55,12 +60,12 @@ namespace RecipeWinForms
             dtcookbookrecipe = DataMaintenance.CookbookRecipeGet(id);
             gCookbookRecipes.Columns.Clear();
             gCookbookRecipes.DataSource = dtcookbookrecipe;
-            WindowsFormUtility.DeleteButtonToGrid(gCookbookRecipes, "Delete");
             WindowsFormUtility.AddComboBoxToGrid(gCookbookRecipes, Recipe.SearchRecipe(), "Recipe", "RecipeName");
             WindowsFormUtility.HideColumn(gCookbookRecipes, "RecipeName");
             WindowsFormUtility.FormatGridForEdit(gCookbookRecipes, "Cookbook");
             WindowsFormUtility.FormatGridForEdit(gCookbookRecipes, "CookbookRecipe");
             WindowsFormUtility.FormatGridForEdit(gCookbookRecipes, "Recipe");
+            WindowsFormUtility.DeleteButtonToGrid(gCookbookRecipes, "Delete");
         }
 
         private void EnableDisable()
@@ -178,6 +183,11 @@ namespace RecipeWinForms
                         break;
                 }
             }
+        }
+
+        private void GCookbookRecipes_DataError(object? sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("Error Happened: Something is wrong with the data you entered.");
         }
 
         private void BtnSave_Click(object? sender, EventArgs e)

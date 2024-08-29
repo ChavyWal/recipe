@@ -34,8 +34,11 @@ namespace RecipeWinForms
             gSteps.CellContentClick += GSteps_CellContentClick;
             this.Activated += FrmRecipeForm_Activated;
             this.FormClosing += FrmRecipeForm_FormClosing;
+            gIngredients.DataError += grid_DataError;
+            gSteps.DataError += grid_DataError;
         }
 
+        
         private void FrmRecipeForm_Activated(object? sender, EventArgs e)
         {
             BindData();
@@ -193,6 +196,11 @@ namespace RecipeWinForms
                     MessageBox.Show(ex.Message, Application.ProductName);
                 }
             }
+        }
+
+        private void grid_DataError(object? sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("Error happened: Something is wrong with the data you entered.");
         }
 
         private void FrmRecipeForm_FormClosing(object? sender, FormClosingEventArgs e)

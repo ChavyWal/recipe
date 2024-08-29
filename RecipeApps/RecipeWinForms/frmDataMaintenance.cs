@@ -24,10 +24,16 @@ namespace RecipeWinForms
         {
             InitializeComponent();
             gDataMaintenance.CellContentClick += GDataMaintenance_CellContentClick;
+            gDataMaintenance.DataError += GDataMaintenance_DataError;
             btnSave.Click += BtnSave_Click;
             this.FormClosing += FrmDataMaintenance_FormClosing;
             SetUpRadioButtons();
             BindData(TableTypeEnum.Users);
+        }
+
+        private void GDataMaintenance_DataError(object? sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("Error Happened: Something is wrong with the data you entered.");
         }
 
         private void FrmDataMaintenance_FormClosing(object? sender, FormClosingEventArgs e)
