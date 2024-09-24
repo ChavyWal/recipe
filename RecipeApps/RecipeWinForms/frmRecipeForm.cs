@@ -38,7 +38,7 @@ namespace RecipeWinForms
             gSteps.DataError += grid_DataError;
         }
 
-        
+
         private void FrmRecipeForm_Activated(object? sender, EventArgs e)
         {
             BindData();
@@ -272,5 +272,7 @@ namespace RecipeWinForms
         {
             Save();
         }
+
+        
     }
 }

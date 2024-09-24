@@ -19,7 +19,7 @@ namespace RecipeWinForms
         {
             InitializeComponent();
             this.Shown += FrmMain_Shown;
-            mnuFileDashboard.Click += FrmMain_Shown;
+            mnuFileDashboard.Click += MnuFileDashboard_Click;
             mnuCascade.Click += MnuCascade_Click;
             mnuTile.Click += MnuTile_Click;
             mnuCookbooksList.Click += MnuCookbooksList_Click;
@@ -32,10 +32,18 @@ namespace RecipeWinForms
             mnuNewCookbook.Click += MnuNewCookbook_Click;
         }
 
+        
+
+        private void FrmMain_Shown(object? sender, EventArgs e)
+        {
+            frmLogin f = new() { StartPosition = FormStartPosition.CenterParent };
+            f.Show();
+            
+        }
+
         public void OpenForm(Type frmtype, int pkvalue = 0)
         {
             bool b = WindowsFormUtility.IsFormOpen(frmtype, pkvalue);
-
             if(b == false)
             {
                 Form? newfrm = null;
@@ -111,6 +119,11 @@ namespace RecipeWinForms
             }
         }
 
+        private void MnuFileDashboard_Click(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmDashBoard));
+        }
+
         private void Newfrm_TextChanged(object? sender, EventArgs e)
         {
             WindowsFormUtility.SetupNav(tsMain);
@@ -131,10 +144,7 @@ namespace RecipeWinForms
             LayoutMdi(MdiLayout.Cascade);
         }
 
-        private void FrmMain_Shown(object? sender, EventArgs e)
-        {
-            OpenForm(typeof(frmDashBoard));
-        }
+        
 
         private void MnuCookbooksList_Click(object? sender, EventArgs e)
         {

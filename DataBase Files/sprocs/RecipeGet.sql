@@ -13,7 +13,7 @@ begin
 	or  r.RecipeName like  '%'+ @Recipename + '%'
 	union select  0,'', '','',0, 0, '' ,0,0, '', '', '', '',  '' 
 	where @includeBlank = 1
-	order by r.recipeid,r.RecipeName
+	order by r.currentstatus desc,r.RecipeName,r.recipeid 
 end
 go
 
