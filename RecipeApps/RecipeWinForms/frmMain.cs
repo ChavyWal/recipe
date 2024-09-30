@@ -36,9 +36,15 @@ namespace RecipeWinForms
 
         private void FrmMain_Shown(object? sender, EventArgs e)
         {
-            frmLogin f = new() { StartPosition = FormStartPosition.CenterParent };
-            f.Show();
-            
+            try
+            {
+                frmLogin f = new() { StartPosition = FormStartPosition.CenterParent };
+                f.Show();
+            }
+            catch
+            {
+
+            }
         }
 
         public void OpenForm(Type frmtype, int pkvalue = 0)

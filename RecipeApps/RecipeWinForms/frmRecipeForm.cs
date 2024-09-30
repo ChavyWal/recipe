@@ -41,6 +41,11 @@ namespace RecipeWinForms
 
         private void FrmRecipeForm_Activated(object? sender, EventArgs e)
         {
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
             BindData();
             if (id > 0)
             {
@@ -129,11 +134,12 @@ namespace RecipeWinForms
                 id = SQLUtility.GetvalueFromFirstRowAsInt(dtrecipe, "Recipeid");
                 this.Tag = id;
                 this.Text = GetRecipeDesc();
+                RefreshData();
                 enableDisable();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Record Keeper");
+                MessageBox.Show(ex.Message, "Recipe app");
             }
             return b;
         }
@@ -255,12 +261,32 @@ namespace RecipeWinForms
 
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            DeleteRecipeSteps(e.RowIndex);
+            try
+            {
+                if (gSteps.CurrentCell.Value is not null && gSteps.CurrentCell.Value.ToString() == "x")
+                {
+                    DeleteRecipeSteps(e.RowIndex);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
         }
 
         private void GIngredients_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            DeleteRecipIngredient(e.RowIndex);
+            try
+            {
+                if (gIngredients.CurrentCell.Value is not null && gIngredients.CurrentCell.Value.ToString() == "x")
+                {
+                    DeleteRecipIngredient(e.RowIndex);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
         }
 
         private void BtnDelete_Click(object? sender, EventArgs e)
@@ -272,7 +298,5 @@ namespace RecipeWinForms
         {
             Save();
         }
-
-        
     }
 }

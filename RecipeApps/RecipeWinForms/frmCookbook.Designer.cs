@@ -228,6 +228,8 @@
             // 
             ckbActive.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ckbActive.AutoSize = true;
+            ckbActive.Checked = true;
+            ckbActive.CheckState = CheckState.Checked;
             ckbActive.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ckbActive.Location = new Point(170, 223);
             ckbActive.Name = "ckbActive";

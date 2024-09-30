@@ -25,8 +25,8 @@ namespace RecipeWinForms
         {
             //try
             //{
-
-                dbManager.SetConnectionString(ConfigurationManager.ConnectionStrings["liveconn"].ConnectionString,true);
+            dbManager.SetConnectionString("Server=tcp:dev-cw.database.windows.net,1433;Initial Catalog=HeartyHearthDB;Persist Security Info=False;User ID=cwadmin;Password=Chw280qc;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;", true);
+                //dbManager.SetConnectionString(ConfigurationManager.ConnectionStrings["liveconn"].ConnectionString,true);
                 this.Close();
             //}
             //catch

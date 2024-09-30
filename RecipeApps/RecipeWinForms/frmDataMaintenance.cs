@@ -38,7 +38,7 @@ namespace RecipeWinForms
 
         private void FrmDataMaintenance_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            
+
             if (SQLUtility.TableHasChanges(dtlist))
             {
                 var res = MessageBox.Show($"Do you want to save changes to {this.Text} before closing?", Application.ProductName, MessageBoxButtons.YesNoCancel);
@@ -88,7 +88,12 @@ namespace RecipeWinForms
 
         private void Delete(int rowindex)
         {
-            var results = MessageBox.Show($"Are you sure you want to delete this {currenttable.ToString()} and all related records?", currenttable.ToString(), MessageBoxButtons.YesNo);
+            string st = "and all related records?";
+            if (currenttable == TableTypeEnum.Users)
+            {
+                st = "and all related recipes, meals and cookbooks?";
+            }
+            var results = MessageBox.Show($"Are you sure you want to delete this {currenttable.ToString()} " + st, currenttable.ToString(), MessageBoxButtons.YesNo);
             if (results == DialogResult.No)
             {
                 return;
@@ -101,15 +106,16 @@ namespace RecipeWinForms
                     DataMaintenance.DeleteRow(currenttable.ToString(), id);
                     BindData(currenttable);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, Application.ProductName);
                 }
             }
-            else if (id == 0 && rowindex < gDataMaintenance.Rows.Count )
+            else if (id == 0 && rowindex < gDataMaintenance.Rows.Count)
             {
                 gDataMaintenance.Rows.Remove(gDataMaintenance.Rows[rowindex]);
             }
+
         }
 
         private bool Save()
@@ -134,7 +140,7 @@ namespace RecipeWinForms
 
         private void C_Click(object? sender, EventArgs e)
         {
-            if(sender is Control && ((Control)sender).Tag is TableTypeEnum)
+            if (sender is Control && ((Control)sender).Tag is TableTypeEnum)
             {
                 BindData((TableTypeEnum)((Control)sender).Tag);
             }
@@ -147,7 +153,20 @@ namespace RecipeWinForms
 
         private void GDataMaintenance_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            Delete(e.RowIndex);
+            try
+            {
+                if (gDataMaintenance.CurrentCell.Value is not null && gDataMaintenance.CurrentCell.Value.ToString() == "x")
+                {
+
+                    Delete(e.RowIndex);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+
         }
     }
 }

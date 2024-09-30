@@ -41,7 +41,7 @@ namespace RecipeWinForms
 
         private void BindRecipeList()
         {
-            DataTable dtRecipes = Recipe.SearchRecipe(true);
+            DataTable dtRecipes = Recipe.SearchRecipe();
             lstRecipeName.DataSource = dtRecipes;
             lstRecipeName.ValueMember = "Recipeid";
             lstRecipeName.DisplayMember = "RecipeName";

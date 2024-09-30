@@ -1,8 +1,7 @@
-create or alter proc AutoCreateCookbook(@usersid int)
+create or alter proc AutoCreateCookbook(@usersid int, @NewCookbookid int = 0 output)
 as
 begin
 	begin try
-	declare @NewCookbookid int
 	begin tran
 			;
 			with x as(
@@ -34,7 +33,6 @@ begin
 		rollback;
 		throw
 	end catch
-
 end
 go
 
@@ -42,9 +40,10 @@ go
 /*
 select * from recipe
 declare @usersid int 
+declare @NewCookbookid int
 select top 1 @usersid = r.usersid from Recipe r
-exec AutoCreateCookbook @usersid = 125
-select c.CookBookID, c.CookBookName, r.RecipeName , cr.RecipeSequence
+exec @NewCookbookid = AutoCreateCookbook @usersid = 224
+select @NewCookbookid, c.CookBookID, c.CookBookName, r.RecipeName , cr.RecipeSequence
 from CookBook c
 left join CookBookRecipe cr
 on c.CookBookID = cr.CookBookID
@@ -55,7 +54,6 @@ on cr.RecipeID = r.RecipeID
 delete cr from CookBookRecipe cr join CookBook c on c.CookBookID = cr.CookBookID where c.CookBookName like 'Recipes by%' 
 delete c from CookBook  c where c.CookBookName like 'Recipes by%'
 
-
 select c.CookBookName, r.RecipeName , cr.RecipeSequence
 from CookBook c
 join CookBookRecipe cr
@@ -63,3 +61,5 @@ on c.CookBookID = cr.CookBookID
 join Recipe r
 on cr.RecipeID = r.RecipeID
 */
+
+

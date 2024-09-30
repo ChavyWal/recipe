@@ -23,13 +23,15 @@ namespace RecipeWinForms
 
         private void BtnCreateCookbook_Click(object? sender, EventArgs e)
         {
+            
             int usersid = WindowsFormUtility.GetIdFromComboBox(lstUsers);
             try
             {
-                DataMaintenance.AutoCreateCookbook(usersid);
+                 int id = DataMaintenance.AutoCreateCookbook(usersid);
+
                 if (this.MdiParent != null && this.MdiParent is frmMain)
                 {
-                    ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbook));
+                    ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbook), id);
                     this.Close();
                 }
             }
@@ -42,7 +44,7 @@ namespace RecipeWinForms
 
         private void BindUsersList()
         {
-            DataTable dtusers = Recipe.GetUserslist(true);
+            DataTable dtusers = Recipe.GetUserslist();
             lstUsers.DataSource = dtusers;
             lstUsers.ValueMember = "usersid";
             lstUsers.DisplayMember = "userName";

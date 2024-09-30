@@ -73,11 +73,14 @@ namespace RecipeSystem
             SQLUtility.ExecuteSQL(cmd);
         }
 
-        public static void AutoCreateCookbook(int usersid)
+        public static int AutoCreateCookbook(int usersid)
         {
+            int i;
             SqlCommand cmd = SQLUtility.GetSqlCommand("AutoCreateCookbook");
             SQLUtility.Setparamvalue(cmd, "@usersid", usersid);
             SQLUtility.ExecuteSQL(cmd);
+            i = (int)cmd.Parameters["@NewCookbookid"].Value;
+            return i;
         }
 
         public static void DeleteRow(string tablename, int id)

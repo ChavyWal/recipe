@@ -97,6 +97,7 @@ namespace RecipeWinForms
                 id = SQLUtility.GetvalueFromFirstRowAsInt(dtcookbook, "Cookbookid");
                 this.Tag = id;
                 this.Text = GetCookbookDesc();
+                
                 EnableDisable();
             }
             catch (Exception ex)
@@ -149,6 +150,7 @@ namespace RecipeWinForms
             try
             {
                 DataMaintenance.CookbookRecipeSave(dtcookbookrecipe, id);
+                BindData();
             }
             catch (Exception ex)
             {
@@ -158,7 +160,18 @@ namespace RecipeWinForms
 
         private void GCookbookRecipes_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            DeleteCookookRecipe(e.RowIndex);
+            try
+            {
+                if(gCookbookRecipes.CurrentCell.Value is  not null && gCookbookRecipes.CurrentCell.Value.ToString() == "x")
+                {
+                        DeleteCookookRecipe(e.RowIndex);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+            
         }
 
         private void FrmCookbook_FormClosing(object? sender, FormClosingEventArgs e)
