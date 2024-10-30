@@ -61,7 +61,7 @@
             btnNewRecipe.Margin = new Padding(10);
             btnNewRecipe.Name = "btnNewRecipe";
             btnNewRecipe.Size = new Size(146, 43);
-            btnNewRecipe.TabIndex = 0;
+            btnNewRecipe.TabIndex = 2;
             btnNewRecipe.Text = "New Recipe";
             btnNewRecipe.UseVisualStyleBackColor = false;
             // 
@@ -75,6 +75,7 @@
             gRecipeList.Margin = new Padding(10);
             gRecipeList.Name = "gRecipeList";
             gRecipeList.RowHeadersWidth = 51;
+            gRecipeList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             gRecipeList.Size = new Size(780, 367);
             gRecipeList.TabIndex = 1;
             // 

@@ -3,9 +3,9 @@ create or alter proc dbo.RecipeUpdate(
 @UsersID int ,
 @CuisineTypeID int ,
 @RecipeName varchar (30),
-@Calories int ,
+@Calories int,
 @DateDraft datetime ,
-@DatePublished datetime ,
+@DatePublished datetime,
 @DateArchived datetime 
 )
 as

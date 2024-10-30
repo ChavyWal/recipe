@@ -157,11 +157,11 @@
             // tbSteps
             // 
             tbSteps.Controls.Add(tblSteps);
-            tbSteps.Location = new Point(4, 37);
+            tbSteps.Location = new Point(4, 29);
             tbSteps.Margin = new Padding(4);
             tbSteps.Name = "tbSteps";
             tbSteps.Padding = new Padding(4);
-            tbSteps.Size = new Size(765, 284);
+            tbSteps.Size = new Size(765, 292);
             tbSteps.TabIndex = 1;
             tbSteps.Text = "Steps";
             tbSteps.UseVisualStyleBackColor = true;
@@ -178,7 +178,7 @@
             tblSteps.RowCount = 2;
             tblSteps.RowStyles.Add(new RowStyle(SizeType.Percent, 14.5896654F));
             tblSteps.RowStyles.Add(new RowStyle(SizeType.Percent, 85.41033F));
-            tblSteps.Size = new Size(757, 276);
+            tblSteps.Size = new Size(757, 284);
             tblSteps.TabIndex = 1;
             // 
             // btnSaveSteps
@@ -187,7 +187,7 @@
             btnSaveSteps.AutoSize = true;
             btnSaveSteps.Location = new Point(3, 3);
             btnSaveSteps.Name = "btnSaveSteps";
-            btnSaveSteps.Size = new Size(94, 34);
+            btnSaveSteps.Size = new Size(94, 35);
             btnSaveSteps.TabIndex = 1;
             btnSaveSteps.Text = "Save";
             btnSaveSteps.UseVisualStyleBackColor = true;
@@ -196,11 +196,11 @@
             // 
             gSteps.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gSteps.Dock = DockStyle.Fill;
-            gSteps.Location = new Point(4, 44);
+            gSteps.Location = new Point(4, 45);
             gSteps.Margin = new Padding(4);
             gSteps.Name = "gSteps";
             gSteps.RowHeadersWidth = 51;
-            gSteps.Size = new Size(749, 228);
+            gSteps.Size = new Size(749, 235);
             gSteps.TabIndex = 0;
             // 
             // tblRecipeInfo
@@ -494,7 +494,6 @@
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(773, 701);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);

@@ -61,7 +61,7 @@
             tblMain.RowStyles.Add(new RowStyle());
             tblMain.RowStyles.Add(new RowStyle());
             tblMain.RowStyles.Add(new RowStyle());
-            tblMain.Size = new Size(799, 370);
+            tblMain.Size = new Size(799, 383);
             tblMain.TabIndex = 0;
             // 
             // tblLists
@@ -81,7 +81,7 @@
             tblLists.Name = "tblLists";
             tblLists.RowCount = 1;
             tblLists.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblLists.Size = new Size(481, 59);
+            tblLists.Size = new Size(481, 72);
             tblLists.TabIndex = 0;
             // 
             // btnRecipeList
@@ -197,7 +197,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = Color.FromArgb(192, 255, 192);
-            ClientSize = new Size(799, 370);
+            ClientSize = new Size(799, 383);
             Controls.Add(tblMain);
             Name = "frmDashBoard";
             Text = "DashBoard";

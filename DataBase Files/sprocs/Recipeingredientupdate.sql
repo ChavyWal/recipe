@@ -8,7 +8,7 @@ create or alter proc dbo.RecipeIngredientUpdate(
 
 as
 begin 
-	select @recipeingredientid = isnull(@Recipeingredientid, 0)
+	select @recipeingredientid = isnull(@Recipeingredientid, 0), @MeasurmentTypeid = nullif(@MeasurmentTypeid, 0)
 
 	if @RecipeIngredientid = 0
 	begin
