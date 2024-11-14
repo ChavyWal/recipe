@@ -143,7 +143,7 @@ namespace RecipeTests
             cuisinetypeid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 cuisinetypeid from cuisinetype");
             usersid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 usersid from users");
             calories = calories + 5;
-            recipename = recipename + calories.ToString();
+            recipename =  calories.ToString();
             DataTable dt = Recipe.Load(id);
             TestContext.WriteLine("change calories to " + calories);
             dt.Rows[0]["calories"] = calories;
