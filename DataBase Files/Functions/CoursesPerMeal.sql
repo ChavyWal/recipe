@@ -17,4 +17,6 @@ go
 
 --select total = dbo.CoursesPerMeal(@Mealid)
 
+--select MealDesc = dbo.CoursesPerMeal(m.mealid), m.MealName from meal m
+
 

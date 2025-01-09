@@ -16,3 +16,4 @@ return @value
 end
 go
 
+--select MealDesc = dbo.RecipesPerMeal(m.mealid), m.MealName from meal m

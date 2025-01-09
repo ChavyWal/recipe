@@ -15,4 +15,4 @@ begin
 end
 go
 
-select MealDesc = dbo.Caloriespermeal(m.mealid), m.MealName from meal m
+--select MealDesc = dbo.Caloriespermeal(m.mealid), m.MealName from meal m

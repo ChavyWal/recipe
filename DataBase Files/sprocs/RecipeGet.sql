@@ -2,7 +2,7 @@ create or alter procedure dbo.RecipeGet(@Recipeid int = 0, @All bit = 0, @Recipe
 as 
 begin
 	select @Recipename = nullif(@recipename, '')
-	select r.RecipeID ,r.RecipeName,ConcatCurrentStatus = concat('Current Status: ',r.CurrentStatus), r.CurrentStatus,u.UsersID, c.CuisineTypeID, u.UserName ,r.Calories, NumIngredients = dbo.IngredientPerRecipe(r.recipeid), c.CuisineType, r.DateDraft, r.DatePublished, r.DateArchived,  r.RecipePicture 
+	select r.RecipeID ,r.RecipeName,ConcatCurrentStatus = concat('Current Status: ',r.CurrentStatus), r.CurrentStatus,u.UsersID, c.CuisineTypeID, u.UserName ,r.Calories, NumIngredients = dbo.IngredientPerRecipe(r.recipeid), c.CuisineType,r.Vegan, r.DateDraft, r.DatePublished, r.DateArchived,  r.RecipePicture 
 	from recipe r
 	join users u 
 	on r.UsersID = u.UsersID
@@ -11,7 +11,7 @@ begin
 	where r.recipeid = @Recipeid
 	or @All = 1
 	or  r.RecipeName like  '%'+ @Recipename + '%'
-	union select  0,'', '','',0, 0, '' ,0,0, '', '', '', '',  '' 
+	union select  0,'', '','',0, 0, '' ,0,0, '',0, '', '', '',  '' 
 	where @includeBlank = 1
 	order by r.currentstatus desc,r.RecipeName,r.recipeid 
 end

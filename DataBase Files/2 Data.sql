@@ -277,3 +277,54 @@ Insert RecipeIngredient (RecipeID, IngredientID, MeasurmentTypeID, IngredientAmo
     on x.CookBookName = c.CookBookName
     join Recipe r 
     on x.RecipeName = r.RecipeName 
+
+	;
+	with x as (
+	select
+	'Breakfast bash' as mealname,
+	'A delicious breakfast for any morning' as MealDesc
+	union all
+	select 'Brunch',
+	'Enjoy this brunch with friends, familly or when you are in the mood fo some good food'
+	union all 
+	select 'The Perfect Lunch',
+	'Treat yourselves with an easy and yummy lunch'
+	union all
+	select 'Dining Dinner',
+	'Dine with a fancy dinner'
+	)
+	update m 
+	set m.MealDesc = x.MealDesc
+	from meal m
+	join x on m.MealName = x.mealName;
+
+	;
+	WITH x AS (
+    SELECT
+        'Chocolate Smores' AS Recipename,
+        0 AS Vegan
+    UNION ALL
+    SELECT
+        'Butter Muffins',
+		0 as vegan
+         UNION ALL
+		SELECT
+        'Cheese Bread',
+        0 as vegan
+	)
+	UPDATE r
+	SET r.vegan = x.vegan
+	FROM recipe r
+	join x ON r.recipename = x.recipename;
+	;
+with x as(
+select 'Treats for two' as Cookbookname,
+1 CookbookSkillnumber
+union all select 'Food for You', 2
+union all select 'Easy and Pie', 3
+union all select 'Fry and Try', 1
+)
+	UPDATE c
+	SET c.cookbookskillnumber = x.CookbookSkillnumber
+	FROM CookBook c 
+	join x ON c.CookBookName = x.Cookbookname;

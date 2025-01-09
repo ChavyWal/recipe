@@ -56,6 +56,10 @@ Create table dbo.Recipe(
 	constraint ck_Datepublished_should_be_less_then_Datearchived check(Datepublished < = Datearchived)
 )
 go 
+alter table recipe drop column if exists Vegan
+go
+alter table recipe add Vegan bit not null default 1
+go
 
 create table dbo.RecipeDirection(
 	RecipeDirectionID int not null identity primary key,
@@ -113,6 +117,8 @@ Create table Dbo.Meal(
 	MealPicture As CONCAT('Meal','_',replace(MealName,' ','_'),'.JPG') persisted
 )
 go 
+alter table meal add MealDesc varchar(500) not null default ''
+go
 
 Create Table Dbo.MealCourse(
 	MealCourseID int not null Identity PRIMARY key,
@@ -142,6 +148,15 @@ Create table dbo.CookBook(
 	Active BIt not null default 1,
 	CookBookPicture As CONCAT('CookkBook','_',replace(CookBookName,' ','_'),'.JPG') persisted
 )
+go
+alter table Cookbook add CookbookSkillNumber int not null constraint ck_CookbookSkillNumber_cannot_be_zero check(CookbookSkillNumber > 0 and CookbookSkillNumber < 4) default 1
+go
+alter table Cookbook add CookbookSkill as 
+	case 
+	when Cookbookskillnumber = 3 then 'advanced'
+	when cookbookskillnumber = 2 then 'intermediate'
+	else 'beginner'
+	end persisted
 go
 
 Create table dbo.CookBookRecipe(

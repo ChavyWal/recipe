@@ -6,6 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Data.Common;
 
 namespace RecipeSystem
 {
@@ -18,9 +20,13 @@ namespace RecipeSystem
 
         private int _recipeid;
         private int _usersid;
+        private string _username = "";
         private int _cuisinetypeid;
         private string _recipename = "";
+        private int _vegan ;
         private int _calories;
+        private string _currentstatus;
+        private int _numingredients;
         private DateTime _datedraft;
         private DateTime? _datepublished;
         private DateTime? _datearchived;
@@ -59,6 +65,19 @@ namespace RecipeSystem
             }
         }
 
+        public string UserName
+        {
+            get { return _username; }
+            set
+            {
+                if (_username != value)
+                {
+                    _username = value;
+                    InvokePropertyChanged();
+                }
+            }
+        }
+
         public int CuisinetypeId
         {
             get { return _cuisinetypeid; }
@@ -72,6 +91,20 @@ namespace RecipeSystem
             }
         }
 
+        public int NumIngredients
+        {
+            get { return _numingredients; }
+            set
+            {
+                if (_numingredients != value)
+                {
+                    _numingredients = value;
+                    InvokePropertyChanged();
+                }
+            }
+        }
+
+
         public string RecipeName
         {
             get { return _recipename; }
@@ -80,6 +113,19 @@ namespace RecipeSystem
                 if (_recipename != value)
                 {
                     _recipename = value;
+                    InvokePropertyChanged();
+                }
+            }
+        }
+
+        public string CurrentStatus
+        {
+            get { return _currentstatus; }
+            set
+            {
+                if (_currentstatus != value)
+                {
+                    _currentstatus = value;
                     InvokePropertyChanged();
                 }
             }
@@ -97,6 +143,8 @@ namespace RecipeSystem
                 }
             }
         }
+
+        
 
         public DateTime DateDraft
         {
@@ -132,6 +180,20 @@ namespace RecipeSystem
                 if (_datearchived != value)
                 {
                     _datearchived = value;
+                    InvokePropertyChanged();
+                }
+            }
+        }
+
+        public int Vegan
+        {
+            get { return _vegan; }
+            set
+            {
+
+                if (_vegan != value)
+                {
+                    _vegan = value;
                     InvokePropertyChanged();
                 }
             }
